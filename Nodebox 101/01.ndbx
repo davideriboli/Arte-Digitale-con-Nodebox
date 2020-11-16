@@ -4,7 +4,7 @@
     <property name="canvasWidth" value="1000"/>
     <property name="canvasX" value="0"/>
     <property name="canvasY" value="0"/>
-    <node name="root" prototype="core.network" renderedChild="translate1">
+    <node name="root" prototype="core.network" renderedChild="ellipse5">
         <node name="colorize1" position="15.00,7.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#c60000ff"/>
             <port name="stroke" type="color" value="#00cf00ff"/>
@@ -33,7 +33,7 @@
             <port name="width" type="float" value="50.0"/>
             <port name="height" type="float" value="50.0"/>
         </node>
-        <node name="ellipse5" position="-4.00,8.00" prototype="corevector.ellipse">
+        <node name="ellipse5" position="-12.00,5.00" prototype="corevector.ellipse">
             <port name="width" type="float" value="50.0"/>
             <port name="height" type="float" value="50.0"/>
         </node>
@@ -41,7 +41,7 @@
             <port name="width" type="float" value="50.0"/>
             <port name="height" type="float" value="50.0"/>
         </node>
-        <node name="frame1" position="37.00,9.00" prototype="core.frame"/>
+        <node name="frame1" position="41.00,7.00" prototype="core.frame"/>
         <node name="grid1" position="1.00,2.00" prototype="corevector.grid">
             <port name="columns" type="int" value="6"/>
             <port name="rows" type="int" value="6"/>
@@ -70,6 +70,7 @@
             <port name="saturation" type="float" value="200.0"/>
             <port name="brightness" type="float" value="200.0"/>
         </node>
+        <node name="rotate1" position="33.00,11.00" prototype="corevector.rotate"/>
         <node name="sample1" position="9.00,2.00" prototype="math.sample">
             <port name="amount" type="int" value="4"/>
             <port name="start" type="float" value="30.0"/>
@@ -100,7 +101,6 @@
             <port name="start" type="float" value="30.0"/>
             <port name="end" type="float" value="60.0"/>
         </node>
-        <node name="translate1" position="33.00,11.00" prototype="corevector.translate"/>
         <conn input="ellipse1.position" output="grid1"/>
         <conn input="ellipse2.width" output="sample1"/>
         <conn input="ellipse2.height" output="sample1"/>
@@ -121,7 +121,7 @@
         <conn input="ellipse6.position" output="grid5"/>
         <conn input="colorize3.fill" output="hsb_color2"/>
         <conn input="hsb_color2.saturation" output="sample5"/>
-        <conn input="translate1.shape" output="colorize3"/>
-        <conn input="translate1.translate" output="frame1"/>
+        <conn input="rotate1.shape" output="colorize3"/>
+        <conn input="rotate1.angle" output="frame1"/>
     </node>
 </ndbx>
