@@ -6,4 +6,4 @@
 * Book of the Year: *Digital Design Theory: Readings from the Field* by Helen Armstrong
   
 
-![cover](cover.png "Cover")
+![cover](Cover.png "Cover")
