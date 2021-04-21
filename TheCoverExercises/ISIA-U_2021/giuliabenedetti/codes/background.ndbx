@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="dc095e91-d243-4da0-9e6b-dcdb3ed54707">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="scale1">
+        <node name="add1" position="-1.00,4.00" prototype="math.add">
+            <port name="value2" type="float" value="229.0"/>
+        </node>
+        <node name="centroid1" position="5.00,10.00" prototype="corevector.centroid"/>
+        <node name="colorize1" position="5.00,13.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="count2" position="-2.00,6.00" prototype="list.count"/>
+        <node name="frame1" position="-2.00,3.00" prototype="core.frame"/>
+        <node name="number1" position="2.00,6.00" prototype="math.number">
+            <port name="value" type="float" value="207.0"/>
+        </node>
+        <node name="rect1" position="5.00,8.00" prototype="corevector.rect">
+            <port name="roundness" type="point" value="111.00,42.00"/>
+        </node>
+        <node name="resample1" position="5.00,6.00" prototype="corevector.resample">
+            <port name="length" type="float" value="3.0"/>
+        </node>
+        <node name="rotate1" position="1.00,10.00" prototype="corevector.rotate"/>
+        <node name="sample1" position="-2.00,8.00" prototype="math.sample">
+            <port name="end" type="float" value="360.0"/>
+        </node>
+        <node name="scale1" position="3.00,14.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="200.00,200.00"/>
+        </node>
+        <node name="textpath1" position="5.00,4.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="O"/>
+            <port name="font_name" type="string" value="ArialMT"/>
+            <port name="font_size" type="float" value="135.0"/>
+            <port name="width" type="float" value="573.0"/>
+        </node>
+        <conn input="centroid1.shape" output="rect1"/>
+        <conn input="rotate1.origin" output="centroid1"/>
+        <conn input="colorize1.shape" output="rotate1"/>
+        <conn input="count2.list" output="rect1"/>
+        <conn input="sample1.amount" output="count2"/>
+        <conn input="resample1.shape" output="textpath1"/>
+        <conn input="sample1.start" output="frame1"/>
+        <conn input="add1.value1" output="frame1"/>
+        <conn input="sample1.end" output="add1"/>
+        <conn input="scale1.shape" output="colorize1"/>
+        <conn input="rotate1.shape" output="rect1"/>
+        <conn input="rotate1.angle" output="sample1"/>
+        <conn input="rect1.position" output="resample1"/>
+        <conn input="rect1.width" output="number1"/>
+        <conn input="rect1.height" output="number1"/>
+    </node>
+</ndbx>

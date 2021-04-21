@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="c4658b69-5411-4759-b64b-64c55df8de42">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="scale1">
+        <node name="combine1" position="9.00,7.00" prototype="list.combine"/>
+        <node name="network1" position="6.00,4.00" prototype="core.network" renderedChild="colorize1">
+            <node name="colorize1" position="-3.00,3.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#ceffc8ff"/>
+                <port name="stroke" type="color" value="#6e00ffff"/>
+                <port name="strokeWidth" type="float" value="2.0"/>
+            </node>
+            <node name="copy1" position="-3.00,1.00" prototype="corevector.copy">
+                <port name="copies" type="int" value="28"/>
+                <port name="translate" type="point" value="20.00,-26.00"/>
+                <port name="rotate" type="float" value="6.0"/>
+                <port name="scale" type="point" value="110.00,110.00"/>
+            </node>
+            <node name="integer1" position="1.00,-1.00" prototype="math.integer"/>
+            <node name="random_numbers1" position="1.00,-3.00" prototype="math.random_numbers">
+                <port name="amount" type="int" value="1"/>
+                <port name="end" type="float" value="107.0"/>
+                <port name="seed" type="int" value="2"/>
+            </node>
+            <node name="random_numbers2" position="-3.00,-3.00" prototype="math.random_numbers">
+                <port name="amount" type="int" value="1"/>
+                <port name="seed" type="int" value="10"/>
+            </node>
+            <node name="range1" position="-7.00,-3.00" prototype="math.range">
+                <port name="end" type="float" value="255.0"/>
+                <port name="step" type="float" value="5.0"/>
+            </node>
+            <node name="range2" position="-10.00,-3.00" prototype="math.range">
+                <port name="end" type="float" value="255.0"/>
+                <port name="step" type="float" value="5.0"/>
+            </node>
+            <node name="rect1" position="-3.00,-1.00" prototype="corevector.rect">
+                <port name="position" type="point" value="0.00,-300.00"/>
+                <port name="width" type="float" value="300.0"/>
+                <port name="height" type="float" value="300.0"/>
+                <port name="roundness" type="point" value="50.00,50.00"/>
+            </node>
+            <node name="rgb_color1" position="-7.00,-1.00" prototype="color.rgb_color">
+                <port name="red" type="float" value="200.0"/>
+                <port name="green" type="float" value="255.0"/>
+                <port name="blue" type="float" value="190.0"/>
+            </node>
+            <node name="textpath1" position="-3.00,-5.00" prototype="corevector.textpath">
+                <port name="text" type="string" value="D"/>
+                <port name="font_name" type="string" value="Bau-Super"/>
+                <port name="font_size" type="float" value="1000.0"/>
+            </node>
+            <conn input="integer1.value" output="random_numbers1"/>
+            <conn input="copy1.copies" output="integer1"/>
+            <conn input="rgb_color1.green" output="range1"/>
+            <conn input="colorize1.shape" output="copy1"/>
+            <conn input="rgb_color1.red" output="random_numbers2"/>
+            <conn input="rgb_color1.alpha" output="range2"/>
+            <conn input="copy1.shape" output="textpath1"/>
+            <conn input="colorize1.fill" output="rgb_color1"/>
+        </node>
+        <node name="network2" position="10.00,4.00" prototype="core.network" renderedChild="copy3">
+            <node name="colorize3" position="6.00,2.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#ffffff00"/>
+                <port name="stroke" type="color" value="#00c3b2ff"/>
+                <port name="strokeWidth" type="float" value="1.0"/>
+            </node>
+            <node name="copy3" position="6.00,3.00" prototype="corevector.copy">
+                <port name="copies" type="int" value="500"/>
+                <port name="rotate" type="float" value="4.0"/>
+                <port name="scale" type="point" value="190.00,190.00"/>
+            </node>
+            <node name="rect2" position="6.00,-1.00" prototype="corevector.rect">
+                <port name="width" type="float" value="300.0"/>
+                <port name="height" type="float" value="300.0"/>
+                <port name="roundness" type="point" value="20.00,20.00"/>
+            </node>
+            <conn input="copy3.shape" output="colorize3"/>
+            <conn input="colorize3.shape" output="rect2"/>
+        </node>
+        <node name="scale1" position="9.00,9.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="25.00,25.00"/>
+        </node>
+        <conn input="scale1.shape" output="combine1"/>
+        <conn input="combine1.list2" output="network1"/>
+        <conn input="combine1.list1" output="network2"/>
+    </node>
+</ndbx>

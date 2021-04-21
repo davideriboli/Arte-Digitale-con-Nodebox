@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6d32f9b0-c1e7-4237-bbe2-d79becfe94fa">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="colorize1" position="2.00,9.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#ffffffae"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="frame1" position="7.00,-1.00" prototype="core.frame"/>
+        <node name="import_svg1" position="2.00,0.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="TITOLO_1.2.svg"/>
+        </node>
+        <node name="number1" position="6.00,4.00" prototype="math.number">
+            <port name="value" type="float" value="250.0"/>
+        </node>
+        <node name="resample1" position="2.00,3.00" prototype="corevector.resample"/>
+        <node name="scale1" position="2.00,6.00" prototype="corevector.scale"/>
+        <node name="subtract1" position="5.00,1.00" prototype="math.subtract">
+            <port name="value1" type="float" value="125.0"/>
+        </node>
+        <conn input="subtract1.value2" output="frame1"/>
+        <conn input="resample1.shape" output="import_svg1"/>
+        <conn input="resample1.length" output="subtract1"/>
+        <conn input="scale1.scale" output="number1"/>
+        <conn input="scale1.origin" output="number1"/>
+        <conn input="scale1.shape" output="resample1"/>
+        <conn input="colorize1.shape" output="scale1"/>
+    </node>
+</ndbx>
