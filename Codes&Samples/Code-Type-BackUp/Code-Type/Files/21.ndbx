@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="06196fbc-bc21-473a-a6b7-ec7391d80b56">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="copy1">
+        <node name="copy1" position="6.00,8.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="5"/>
+            <port name="rotate" type="float" value="-4.0"/>
+        </node>
+        <node name="count1" position="3.00,2.00" prototype="list.count"/>
+        <node name="freehand1" position="6.00,2.00" prototype="corevector.freehand">
+            <port name="path" type="string" value="M-353.00,-234.50  -353.00,-233.50  -353.00,-231.50  -353.00,-230.50  -353.00,-228.50  -353.00,-226.50  -353.00,-224.50  -353.00,-222.50  -353.00,-221.50  -353.00,-220.50  -353.00,-219.50  -353.00,-217.50  -350.00,-214.50  -347.00,-211.50  -342.00,-207.50  -336.00,-205.50  -332.00,-203.50  -327.00,-202.50  -324.00,-201.50  -320.00,-200.50  -317.00,-200.50  -314.00,-200.50  -310.00,-200.50  -306.00,-204.50  -302.00,-207.50  -299.00,-209.50  -296.00,-214.50  -293.00,-217.50  -290.00,-222.50  -288.00,-230.50  -286.00,-236.50  -285.00,-241.50  -283.00,-246.50  -282.00,-251.50  -279.00,-256.50  -277.00,-261.50  -274.00,-266.50  -271.00,-271.50  -268.00,-275.50  -264.00,-281.50  -260.00,-286.50  -258.00,-288.50  -253.00,-292.50  -249.00,-294.50  -246.00,-296.50  -242.00,-297.50  -238.00,-298.50  -235.00,-299.50  -233.00,-299.50  -230.00,-299.50  -227.00,-299.50  -225.00,-299.50  -223.00,-298.50  -221.00,-296.50  -220.00,-293.50  -219.00,-288.50  -218.00,-285.50  -218.00,-281.50  -218.00,-276.50  -221.00,-271.50  -226.00,-265.50  -234.00,-256.50  -242.00,-248.50  -252.00,-237.50  -258.00,-230.50  -266.00,-221.50  -271.00,-212.50  -275.00,-203.50  -277.00,-194.50  -279.00,-186.50  -279.00,-180.50  -279.00,-172.50  -279.00,-166.50  -278.00,-159.50  -275.00,-152.50  -271.00,-143.50  -266.00,-135.50  -260.00,-127.50  -251.00,-115.50  -240.00,-108.50  -231.00,-103.50  -221.00,-99.50  -211.00,-96.50  -202.00,-96.50  -194.00,-96.50  -185.00,-99.50  -175.00,-103.50  -167.00,-109.50  -157.00,-119.50  -151.00,-126.50  -143.00,-135.50  -137.00,-146.50  -132.00,-158.50  -129.00,-165.50  -126.00,-174.50  -125.00,-181.50  -125.00,-189.50  -125.00,-200.50  -125.00,-210.50  -126.00,-216.50  -128.00,-221.50  -130.00,-227.50  -132.00,-232.50  -132.00,-241.50  -133.00,-253.50  -133.00,-266.50  -133.00,-278.50  -133.00,-284.50  -132.00,-292.50  -130.00,-298.50  -126.00,-303.50  -122.00,-307.50  -116.00,-311.50  -110.00,-315.50  -103.00,-317.50  -99.00,-319.50  -94.00,-320.50  -88.00,-320.50  -84.00,-320.50  -81.00,-320.50  -77.00,-319.50  -72.00,-313.50  -68.00,-307.50  -66.00,-302.50  -64.00,-297.50  -63.00,-291.50  -63.00,-287.50  -63.00,-282.50  -66.00,-276.50  -70.00,-268.50  -74.00,-261.50  -79.00,-253.50  -82.00,-247.50  -85.00,-240.50  -86.00,-232.50  -87.00,-226.50  -87.00,-218.50  -87.00,-212.50  -85.00,-205.50  -81.00,-198.50  -77.00,-193.50  -72.00,-190.50  -67.00,-187.50  -61.00,-184.50  -55.00,-182.50  -49.00,-181.50  -42.00,-181.50  -36.00,-181.50  -32.00,-181.50  -24.00,-185.50  -19.00,-188.50  -14.00,-192.50  -10.00,-197.50  -7.00,-203.50  -5.00,-206.50  -3.00,-210.50  -2.00,-212.50  -1.00,-213.50  -1.00,-215.50  -1.00,-216.50  -1.00,-217.50  0.00,-217.50 "/>
+        </node>
+        <node name="group1" position="6.00,8.00" prototype="corevector.group"/>
+        <node name="lineType" position="6.00,6.00" prototype="core.network" renderedChild="textpath1">
+            <node name="ellipse1" position="1.00,6.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="3.0"/>
+                <port name="height" type="float" value="3.0"/>
+            </node>
+            <node name="resample1" position="1.00,3.00" prototype="corevector.resample">
+                <port name="points" type="int" value="1"/>
+            </node>
+            <node name="textpath1" position="1.00,1.00" prototype="corevector.textpath">
+                <port name="font_name" type="string" value="Graphik-SemiboldItalic"/>
+                <port name="font_size" type="float" value="10.0"/>
+            </node>
+            <port childReference="textpath1.text" name="text" range="value" type="string" value="hello" widget="string"/>
+            <port childReference="textpath1.position" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="textpath1.font_size" name="font_size" range="value" type="float" value="10.0" widget="float"/>
+            <conn input="resample1.shape" output="textpath1"/>
+            <conn input="ellipse1.position" output="resample1"/>
+        </node>
+        <node name="make_string" position="0.00,0.00" prototype="string.make_strings">
+            <port name="string" type="string" value="The Originality of the Avant Garde"/>
+            <port name="separator" type="string" value=""/>
+        </node>
+        <node name="resample1" position="6.00,4.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+        </node>
+        <conn input="lineType.text" output="make_string"/>
+        <conn input="count1.list" output="make_string"/>
+        <conn input="resample1.points" output="count1"/>
+        <conn input="resample1.shape" output="freehand1"/>
+        <conn input="lineType.position" output="resample1"/>
+        <conn input="group1.shapes" output="lineType"/>
+        <conn input="copy1.shape" output="group1"/>
+    </node>
+</ndbx>

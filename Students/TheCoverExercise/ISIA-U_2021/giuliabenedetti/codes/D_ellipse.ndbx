@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="20576fb8-2f5b-4c4c-a6c1-18d546489aa2">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="network1">
+        <node name="count1" position="8.00,3.00" prototype="list.count"/>
+        <node name="grid1" position="8.00,2.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="1"/>
+            <port name="rows" type="int" value="1"/>
+            <port name="width" type="float" value="500.0"/>
+            <port name="height" type="float" value="500.0"/>
+        </node>
+        <node name="make_strings1" position="5.00,1.00" prototype="string.make_strings">
+            <port name="string" type="string" value="D"/>
+            <port name="separator" type="string" value=""/>
+        </node>
+        <node name="network1" position="5.00,6.00" prototype="core.network" renderedChild="translate1">
+            <node name="colorize1" position="1.00,5.00" prototype="corevector.colorize">
+                <port name="stroke" type="color" value="#ffffffff"/>
+                <port name="strokeWidth" type="float" value="0.7"/>
+            </node>
+            <node name="ellipse1" position="1.00,2.00" prototype="corevector.ellipse">
+                <port name="position" type="point" value="0.00,50.00"/>
+                <port name="width" type="float" value="116.0"/>
+                <port name="height" type="float" value="27.0"/>
+            </node>
+            <node name="resample2" position="1.00,3.00" prototype="corevector.resample">
+                <port name="length" type="float" value="2.0"/>
+            </node>
+            <node name="reverse1" position="4.00,7.00" prototype="list.reverse"/>
+            <node name="sort1" position="1.00,6.00" prototype="corevector.sort">
+                <port name="order_by" type="string" value="angle"/>
+            </node>
+            <node name="textpath2" position="1.00,4.00" prototype="corevector.textpath">
+                <port name="text" type="string" value=""/>
+                <port name="font_name" type="string" value="GothamRounded-BoldItalic"/>
+                <port name="font_size" type="float" value="135.0"/>
+            </node>
+            <node name="translate1" position="1.00,8.00" prototype="corevector.translate"/>
+            <port childReference="translate1.translate" description="" label="" name="pos" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="textpath2.text" description="" label="" name="text" range="value" type="string" value="W" widget="string"/>
+            <conn input="textpath2.position" output="resample2"/>
+            <conn input="resample2.shape" output="ellipse1"/>
+            <conn input="colorize1.shape" output="textpath2"/>
+            <conn input="sort1.shapes" output="colorize1"/>
+            <conn input="reverse1.list" output="sort1"/>
+            <conn input="translate1.shape" output="reverse1"/>
+        </node>
+        <node name="slice2" position="8.00,4.00" prototype="list.slice"/>
+        <conn input="network1.text" output="make_strings1"/>
+        <conn input="count1.list" output="make_strings1"/>
+        <conn input="slice2.size" output="count1"/>
+        <conn input="slice2.list" output="grid1"/>
+        <conn input="network1.pos" output="slice2"/>
+    </node>
+</ndbx>

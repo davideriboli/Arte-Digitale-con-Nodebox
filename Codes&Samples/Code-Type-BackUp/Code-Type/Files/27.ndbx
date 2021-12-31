@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="9ba8542b-b598-4da7-a60c-18ddf4fa64cd">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="mesh">
+        <node name="concatenate1" position="3.00,11.00" prototype="string.concatenate">
+            <port name="string1" type="string" value="/Users/Q/Desktop/2013-Spring/0_PlaywithNode/svgs/"/>
+            <port name="string3" type="string" value=".svg"/>
+        </node>
+        <node name="count1" position="6.00,10.00" prototype="list.count"/>
+        <node name="grid1" position="6.00,7.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="3"/>
+            <port name="rows" type="int" value="3"/>
+            <port name="width" type="float" value="1000.0"/>
+            <port name="height" type="float" value="1000.0"/>
+        </node>
+        <node name="make_strings1" position="3.00,9.00" prototype="string.make_strings">
+            <port name="string" type="string" value="2g;2r;2a;2p;2h;2i;2c"/>
+        </node>
+        <node name="mesh" position="3.00,14.00" prototype="core.network" renderedChild="translate1">
+            <node name="add1" position="2.00,11.00" prototype="math.add">
+                <port name="value2" type="float" value="10.0"/>
+            </node>
+            <node name="colorize1" position="-1.00,14.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#00000000"/>
+                <port name="strokeWidth" type="float" value="1.0"/>
+            </node>
+            <node name="convert_range1" position="2.00,7.00" prototype="math.convert_range">
+                <port name="target_end" type="float" value="2007.0"/>
+            </node>
+            <node name="count1" position="2.00,4.00" prototype="list.count"/>
+            <node name="ellipse1" position="-1.00,13.00" prototype="corevector.ellipse"/>
+            <node name="import_svg2" position="-1.00,0.00" prototype="corevector.import_svg">
+                <port name="file" type="string" value="/Users/Q/Desktop/2013-Spring/0_PlaywithNode/svgs/GG.svg"/>
+            </node>
+            <node name="multiply1" position="2.00,10.00" prototype="math.multiply">
+                <port name="value2" type="float" value="100.0"/>
+            </node>
+            <node name="point1" position="-1.00,2.00" prototype="corevector.point"/>
+            <node name="pow1" position="2.00,9.00" prototype="math.pow">
+                <port name="value2" type="float" value="2.0"/>
+            </node>
+            <node name="range1" position="2.00,6.00" prototype="math.range"/>
+            <node name="resample1" position="-1.00,1.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+                <port name="length" type="float" value="13.0"/>
+                <port name="points" type="int" value="212"/>
+            </node>
+            <node name="sin1" position="2.00,8.00" prototype="math.sin"/>
+            <node name="translate1" position="-1.00,15.00" prototype="corevector.translate"/>
+            <port childReference="import_svg2.file" name="file" range="value" type="string" value="/Users/Q/Desktop/2013-Spring/0_PlaywithNode/svgs/GG.svg" widget="file"/>
+            <port childReference="convert_range1.target_end" name="target_end" range="value" type="float" value="2007.0" widget="float"/>
+            <port childReference="translate1.translate" name="translate" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <conn input="resample1.shape" output="import_svg2"/>
+            <conn input="point1.value" output="resample1"/>
+            <conn input="ellipse1.position" output="point1"/>
+            <conn input="range1.end" output="count1"/>
+            <conn input="convert_range1.value" output="range1"/>
+            <conn input="convert_range1.source_end" output="count1"/>
+            <conn input="sin1.value" output="convert_range1"/>
+            <conn input="count1.list" output="point1"/>
+            <conn input="colorize1.shape" output="ellipse1"/>
+            <conn input="pow1.value1" output="sin1"/>
+            <conn input="multiply1.value1" output="pow1"/>
+            <conn input="add1.value1" output="multiply1"/>
+            <conn input="ellipse1.width" output="add1"/>
+            <conn input="ellipse1.height" output="add1"/>
+            <conn input="translate1.shape" output="colorize1"/>
+        </node>
+        <node name="random_numbers1" position="6.00,12.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="1717.0"/>
+            <port name="end" type="float" value="3000.0"/>
+        </node>
+        <conn input="concatenate1.string2" output="make_strings1"/>
+        <conn input="count1.list" output="make_strings1"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+        <conn input="mesh.file" output="concatenate1"/>
+        <conn input="mesh.translate" output="grid1"/>
+        <conn input="mesh.target_end" output="random_numbers1"/>
+    </node>
+</ndbx>

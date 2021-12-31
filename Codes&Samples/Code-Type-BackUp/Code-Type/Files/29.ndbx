@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="820f38ea-6598-46a1-92a2-3c233a77a0ef">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="textpath1">
+        <node name="concatenate1" position="-2.00,4.00" prototype="string.concatenate"/>
+        <node name="floor1" position="-9.00,-3.00" prototype="math.floor"/>
+        <node name="frame1" position="-4.00,-5.00" prototype="core.frame"/>
+        <node name="make_point1" position="-6.00,4.00" prototype="corevector.make_point"/>
+        <node name="make_strings1" position="-2.00,-1.00" prototype="string.make_strings">
+            <port name="string" type="string" value="FORM"/>
+            <port name="separator" type="string" value=""/>
+        </node>
+        <node name="multiply1" position="-9.00,-4.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.1"/>
+        </node>
+        <node name="range1" position="-6.00,-1.00" prototype="math.range">
+            <port name="end" type="float" value="334.0"/>
+            <port name="step" type="float" value="9.0"/>
+        </node>
+        <node name="shuffle1" position="-2.00,0.00" prototype="list.shuffle">
+            <port name="seed" type="int" value="23"/>
+        </node>
+        <node name="slice1" position="-6.00,2.00" prototype="list.slice">
+            <port name="size" type="int" value="1"/>
+        </node>
+        <node name="slice2" position="-3.00,2.00" prototype="list.slice">
+            <port name="start_index" type="int" value="1"/>
+            <port name="size" type="int" value="1"/>
+        </node>
+        <node name="slice3" position="0.00,2.00" prototype="list.slice">
+            <port name="start_index" type="int" value="2"/>
+            <port name="size" type="int" value="1"/>
+        </node>
+        <node name="slice4" position="3.00,2.00" prototype="list.slice">
+            <port name="start_index" type="int" value="3"/>
+            <port name="size" type="int" value="1"/>
+        </node>
+        <node name="textpath1" position="-2.00,6.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="Helvetica"/>
+            <port name="font_size" type="float" value="114.0"/>
+        </node>
+        <conn input="shuffle1.list" output="make_strings1"/>
+        <conn input="slice1.list" output="shuffle1"/>
+        <conn input="slice2.list" output="shuffle1"/>
+        <conn input="slice3.list" output="shuffle1"/>
+        <conn input="slice4.list" output="shuffle1"/>
+        <conn input="concatenate1.string4" output="slice4"/>
+        <conn input="concatenate1.string3" output="slice3"/>
+        <conn input="concatenate1.string2" output="slice2"/>
+        <conn input="concatenate1.string1" output="slice1"/>
+        <conn input="textpath1.text" output="concatenate1"/>
+        <conn input="make_point1.y" output="range1"/>
+        <conn input="textpath1.position" output="make_point1"/>
+        <conn input="multiply1.value1" output="frame1"/>
+        <conn input="floor1.value" output="multiply1"/>
+        <conn input="shuffle1.seed" output="floor1"/>
+    </node>
+</ndbx>

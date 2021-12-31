@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="a7adbe8b-8d2d-46f3-8366-83169d255e49">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="scale1">
+        <node name="add1" position="6.00,-1.00" prototype="math.add">
+            <port name="value1" type="float" value="-22.0"/>
+        </node>
+        <node name="colorize1" position="2.00,4.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fffffffb"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="ellipse1" position="2.00,3.00" prototype="corevector.ellipse"/>
+        <node name="frame1" position="7.00,-3.00" prototype="core.frame"/>
+        <node name="import_svg1" position="2.00,0.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="ockerse_.svg"/>
+        </node>
+        <node name="number1" position="6.00,3.00" prototype="math.number">
+            <port name="value" type="float" value="200.0"/>
+        </node>
+        <node name="range1" position="6.00,1.00" prototype="math.range">
+            <port name="start" type="float" value="-22.0"/>
+            <port name="end" type="float" value="16.0"/>
+        </node>
+        <node name="resample1" position="2.00,1.00" prototype="corevector.resample">
+            <port name="length" type="float" value="3.0"/>
+        </node>
+        <node name="scale1" position="2.00,5.00" prototype="corevector.scale"/>
+        <conn input="ellipse1.position" output="resample1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="ellipse1.width" output="range1"/>
+        <conn input="ellipse1.height" output="range1"/>
+        <conn input="add1.value2" output="frame1"/>
+        <conn input="range1.start" output="add1"/>
+        <conn input="scale1.shape" output="colorize1"/>
+        <conn input="scale1.origin" output="number1"/>
+        <conn input="scale1.scale" output="number1"/>
+        <conn input="resample1.shape" output="import_svg1"/>
+    </node>
+</ndbx>

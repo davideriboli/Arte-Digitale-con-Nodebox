@@ -1,0 +1,33 @@
+{
+  "country":"de",
+  "values":{
+    "Thüringen":260,
+    "Schleswig-Holstein":590,
+    "Sachsen-Anhalt":278,
+    "Sachsen":306,
+    "Saarland":917,
+    "Rheinland-Pfalz":882,
+    "Nordrhein-Westfalen":1179,
+    "Niedersachsen":731,
+    "Mecklenburg-Vorpommern":284,
+    "Hessen":1420,
+    "Hamburg":1494,
+    "Bremen":1472,
+    "Brandenburg":276,
+    "Berlin":1456,
+    "Bayern":1123,
+    "Baden-Württemberg":1315
+  },
+  "colors":[
+    {"range-in":260,"color":"#B1BA00"},
+    {"range-in":397,"color":"#A2B50D"},
+    {"range-in":534,"color":"#94B01B"},
+    {"range-in":671,"color":"#86AB28"},
+    {"range-in":808,"color":"#78A736"},
+    {"range-in":946,"color":"#6AA244"},
+    {"range-in":1083,"color":"#5C9D51"},
+    {"range-in":1220,"color":"#4E985F"},
+    {"range-in":1357,"color":"#40946D"},
+    {"range-in":1494,"color":"#28946D"}
+  ]
+}

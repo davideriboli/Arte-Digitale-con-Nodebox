@@ -1,0 +1,93 @@
+[
+  {
+    "path": "img-refs/13-tilling.png",
+    "name": "13-tilling.png",
+    "size": 60406,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/12-textFX.png",
+    "name": "12-textFX.png",
+    "size": 70827,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/11-spirograph.png",
+    "name": "11-spirograph.png",
+    "size": 164601,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/10-sorting.png",
+    "name": "10-sorting.png",
+    "size": 52428,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/09-binary-operation.png",
+    "name": "09-binary-operation.png",
+    "size": 27623,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/08-svg.png",
+    "name": "08-svg.png",
+    "size": 14876,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/07-template.png",
+    "name": "07-template.png",
+    "size": 10302,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/06-transformations.png",
+    "name": "06-transformations.png",
+    "size": 6704,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/05-copy.png",
+    "name": "05-copy.png",
+    "size": 104747,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/04-grid.png",
+    "name": "04-grid.png",
+    "size": 5770,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/03-text.png",
+    "name": "03-text.png",
+    "size": 3889,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/02-lines.png",
+    "name": "02-lines.png",
+    "size": 3546,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/01-primitives.png",
+    "name": "01-primitives.png",
+    "size": 3644,
+    "extension": ".png",
+    "type": "file"
+  }
+]

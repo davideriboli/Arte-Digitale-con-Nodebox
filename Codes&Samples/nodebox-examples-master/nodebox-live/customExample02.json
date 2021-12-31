@@ -1,0 +1,192 @@
+{
+    "title": "custom-example-02",
+    "color": "#f60",
+    "dependencies": {
+        "core/g": "dev",
+        "bitcraftlab/combinatoric": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "colorize1",
+            "nodes": [
+                {
+                    "name": "randomNumbers1",
+                    "x": 75,
+                    "y": 155,
+                    "fn": "g.randomNumbers",
+                    "values": {
+                        "min": -250,
+                        "max": 250
+                    }
+                },
+                {
+                    "name": "randomNumbers2",
+                    "x": 275,
+                    "y": 155,
+                    "fn": "g.randomNumbers",
+                    "values": {
+                        "min": -250,
+                        "max": 250
+                    }
+                },
+                {
+                    "name": "makePoint1",
+                    "x": 185,
+                    "y": 285,
+                    "fn": "g.makePoint"
+                },
+                {
+                    "name": "points",
+                    "x": 75,
+                    "y": 75,
+                    "fn": "g.integer",
+                    "values": {
+                        "v": 14
+                    }
+                },
+                {
+                    "name": "seed",
+                    "x": 275,
+                    "y": 75,
+                    "fn": "g.integer",
+                    "values": {
+                        "v": 15
+                    }
+                },
+                {
+                    "name": "lookup1",
+                    "x": 105,
+                    "y": 495,
+                    "fn": "g.lookup",
+                    "values": {
+                        "key": "x"
+                    }
+                },
+                {
+                    "name": "lookup2",
+                    "x": 235,
+                    "y": 495,
+                    "fn": "g.lookup",
+                    "values": {
+                        "key": "y"
+                    }
+                },
+                {
+                    "name": "line1",
+                    "x": 165,
+                    "y": 625,
+                    "fn": "g.line"
+                },
+                {
+                    "name": "colorize1",
+                    "x": 165,
+                    "y": 745,
+                    "fn": "g.colorize",
+                    "values": {
+                        "strokeWidth": 5
+                    }
+                },
+                {
+                    "name": "hslColor1",
+                    "x": 305,
+                    "y": 625,
+                    "fn": "g.hslColor",
+                    "values": {
+                        "hue": 0.6,
+                        "lightness": 0.6,
+                        "saturation": 1,
+                        "alpha": 0.05
+                    }
+                },
+                {
+                    "name": "productPoint1",
+                    "x": 185,
+                    "y": 375,
+                    "fn": "combinatoric.productPoint"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "randomNumbers1",
+                    "input": "makePoint1",
+                    "parameter": "x"
+                },
+                {
+                    "output": "randomNumbers2",
+                    "input": "makePoint1",
+                    "parameter": "y"
+                },
+                {
+                    "output": "points",
+                    "input": "randomNumbers1",
+                    "parameter": "amount"
+                },
+                {
+                    "output": "seed",
+                    "input": "randomNumbers2",
+                    "parameter": "seed"
+                },
+                {
+                    "output": "lookup1",
+                    "input": "line1",
+                    "parameter": "point1"
+                },
+                {
+                    "output": "lookup2",
+                    "input": "line1",
+                    "parameter": "point2"
+                },
+                {
+                    "output": "line1",
+                    "input": "colorize1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "hslColor1",
+                    "input": "colorize1",
+                    "parameter": "stroke"
+                },
+                {
+                    "output": "points",
+                    "input": "randomNumbers2",
+                    "parameter": "amount"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "productPoint1",
+                    "parameter": "list1"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "productPoint1",
+                    "parameter": "list2"
+                },
+                {
+                    "output": "productPoint1",
+                    "input": "lookup1",
+                    "parameter": "table"
+                },
+                {
+                    "output": "productPoint1",
+                    "input": "lookup2",
+                    "parameter": "table"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true,
+            "stickies": [
+                {
+                    "x": 55,
+                    "y": 25,
+                    "width": 375,
+                    "height": 785,
+                    "text": "another example using productPoint from the combinatoric dependency"
+                }
+            ]
+        }
+    ],
+    "id": "customExample02"
+}

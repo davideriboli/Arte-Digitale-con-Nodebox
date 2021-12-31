@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="dd320327-8ceb-4bdb-960c-70498cc7e66d">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="scale1">
+        <node name="add1" position="7.00,7.00" prototype="math.add"/>
+        <node name="count1" position="14.00,5.00" prototype="list.count"/>
+        <node name="divide1" position="7.00,-1.00" prototype="math.divide">
+            <port name="value2" type="float" value="10.0"/>
+        </node>
+        <node name="ellipse1" position="10.00,13.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="0.2"/>
+            <port name="height" type="float" value="0.2"/>
+        </node>
+        <node name="frame1" position="7.00,-2.00" prototype="core.frame"/>
+        <node name="group1" position="10.00,14.00" prototype="corevector.group"/>
+        <node name="lookup1" position="10.00,9.00" prototype="data.lookup"/>
+        <node name="lookup2" position="13.00,9.00" prototype="data.lookup">
+            <port name="key" type="string" value="y"/>
+        </node>
+        <node name="make_point2" position="10.00,11.00" prototype="corevector.make_point"/>
+        <node name="multiply2" position="7.00,4.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.75"/>
+        </node>
+        <node name="point1" position="10.00,5.00" prototype="corevector.point"/>
+        <node name="range1" position="7.00,1.00" prototype="math.range">
+            <port name="start" type="float" value="-13.0"/>
+            <port name="end" type="float" value="15.0"/>
+            <port name="step" type="float" value="0.25"/>
+        </node>
+        <node name="resample1" position="10.00,4.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+            <port name="length" type="float" value="1.0"/>
+            <port name="points" type="int" value="907"/>
+        </node>
+        <node name="scale1" position="10.00,15.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="1000.00,1000.00"/>
+        </node>
+        <node name="sin1" position="7.00,3.00" prototype="math.sin"/>
+        <node name="slice1" position="7.00,6.00" prototype="list.slice"/>
+        <node name="sort1" position="10.00,7.00" prototype="corevector.sort">
+            <port name="order_by" type="string" value="x"/>
+        </node>
+        <node name="textpath1" position="10.00,1.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="1"/>
+            <port name="font_name" type="string" value="Helvetica-Bold"/>
+        </node>
+        <conn input="sin1.value" output="range1"/>
+        <conn input="multiply2.value1" output="sin1"/>
+        <conn input="resample1.shape" output="textpath1"/>
+        <conn input="point1.value" output="resample1"/>
+        <conn input="sort1.shapes" output="point1"/>
+        <conn input="lookup1.list" output="sort1"/>
+        <conn input="lookup2.list" output="sort1"/>
+        <conn input="make_point2.x" output="lookup1"/>
+        <conn input="make_point2.y" output="add1"/>
+        <conn input="count1.list" output="point1"/>
+        <conn input="slice1.size" output="count1"/>
+        <conn input="slice1.list" output="multiply2"/>
+        <conn input="add1.value1" output="slice1"/>
+        <conn input="divide1.value1" output="frame1"/>
+        <conn input="range1.start" output="divide1"/>
+        <conn input="scale1.shape" output="group1"/>
+        <conn input="add1.value2" output="lookup2"/>
+        <conn input="ellipse1.position" output="make_point2"/>
+        <conn input="group1.shapes" output="ellipse1"/>
+    </node>
+</ndbx>

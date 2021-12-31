@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="dd320327-8ceb-4bdb-960c-70498cc7e66d">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="align1">
+        <node name="align1" position="7.00,13.00" prototype="corevector.align"/>
+        <node name="connect1" position="7.00,7.00" prototype="corevector.connect">
+            <port name="closed" type="boolean" value="false"/>
+        </node>
+        <node name="frame1" position="4.00,2.00" prototype="core.frame"/>
+        <node name="make_point1" position="7.00,6.00" prototype="corevector.make_point"/>
+        <node name="multiply1" position="4.00,4.00" prototype="math.multiply">
+            <port name="value2" type="float" value="159.0"/>
+        </node>
+        <node name="multiply2" position="7.00,4.00" prototype="math.multiply">
+            <port name="value2" type="float" value="10.0"/>
+        </node>
+        <node name="number1" position="10.00,9.00" prototype="math.number">
+            <port name="value" type="float" value="900.0"/>
+        </node>
+        <node name="range1" position="7.00,2.00" prototype="math.range">
+            <port name="end" type="float" value="100.0"/>
+            <port name="step" type="float" value="0.1"/>
+        </node>
+        <node name="scale1" position="7.00,11.00" prototype="corevector.scale"/>
+        <node name="sin1" position="7.00,3.00" prototype="math.sin"/>
+        <node name="text_on_path1" position="7.00,8.00" prototype="corevector.text_on_path">
+            <port name="text" type="string" value="text following a sine path"/>
+            <port name="font_name" type="string" value="GothamRounded-Bold"/>
+            <port name="font_size" type="float" value="10.0"/>
+        </node>
+        <conn input="sin1.value" output="range1"/>
+        <conn input="multiply1.value1" output="range1"/>
+        <conn input="multiply2.value1" output="sin1"/>
+        <conn input="make_point1.y" output="multiply2"/>
+        <conn input="make_point1.x" output="multiply1"/>
+        <conn input="connect1.points" output="make_point1"/>
+        <conn input="text_on_path1.path" output="connect1"/>
+        <conn input="multiply1.value2" output="frame1"/>
+        <conn input="scale1.scale" output="number1"/>
+        <conn input="scale1.origin" output="number1"/>
+        <conn input="scale1.shape" output="text_on_path1"/>
+        <conn input="align1.shape" output="scale1"/>
+    </node>
+</ndbx>

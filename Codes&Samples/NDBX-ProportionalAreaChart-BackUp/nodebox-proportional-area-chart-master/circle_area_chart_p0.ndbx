@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="fad0771a-84a6-4a46-b984-b65289978ae4">
+    <property name="canvasHeight" value="300"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="query_json1">
+        <node name="http_get1" position="6.00,1.00" prototype="network.http_get">
+            <port name="url" type="string" value="https://spreadsheet.glitch.me/?key=1XsE6OHjsMEMeqb-Jlujw72bbDoGRPKPNdWu-SUkKeYg"/>
+        </node>
+        <node position="6.00,3.00" prototype="data.lookup">
+            <port name="key" type="string" value="body"/>
+        </node>
+        <node name="query_json1" position="6.00,5.00" prototype="network.query_json">
+            <port name="query" type="string" value="$"/>
+        </node>
+        <conn input="lookup.list" output="http_get1"/>
+        <conn input="query_json1.json" output="lookup"/>
+    </node>
+</ndbx>

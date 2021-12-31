@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="5b93e9a6-bdd8-46be-93b0-0317b1213099">
+    <property name="canvasHeight" value="2000"/>
+    <property name="canvasWidth" value="2000"/>
+    <node name="root" prototype="core.network" renderedChild="colorize2">
+        <node name="colorize1" position="-1.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ec000000"/>
+        </node>
+        <node name="colorize2" position="3.00,9.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="combine1" position="2.00,10.00" prototype="list.combine"/>
+        <node name="frame1" position="7.00,2.00" prototype="core.frame"/>
+        <node name="import_svg1" position="3.00,2.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="ct1.svg"/>
+        </node>
+        <node name="number1" position="6.00,5.00" prototype="math.number">
+            <port name="value" type="float" value="250.0"/>
+        </node>
+        <node name="rect1" position="-1.00,7.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1399.0"/>
+            <port name="height" type="float" value="151.0"/>
+        </node>
+        <node name="resample1" position="3.00,5.00" prototype="corevector.resample">
+            <port name="length" type="float" value="6.0"/>
+        </node>
+        <node name="scale1" position="3.00,7.00" prototype="corevector.scale"/>
+        <node name="subtract1" position="6.00,3.00" prototype="math.subtract">
+            <port name="value1" type="float" value="125.0"/>
+        </node>
+        <conn input="resample1.shape" output="import_svg1"/>
+        <conn input="subtract1.value2" output="frame1"/>
+        <conn input="resample1.length" output="subtract1"/>
+        <conn input="scale1.shape" output="resample1"/>
+        <conn input="scale1.origin" output="number1"/>
+        <conn input="scale1.scale" output="number1"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="combine1.list3" output="colorize2"/>
+        <conn input="colorize2.shape" output="scale1"/>
+    </node>
+</ndbx>

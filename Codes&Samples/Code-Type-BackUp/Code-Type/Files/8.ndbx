@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="7b8fa86c-c5f6-4037-82f0-be8c5a1d0e60">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="align1" position="4.00,5.00" prototype="corevector.align"/>
+        <node name="colorize1" position="3.00,3.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="count1" position="7.00,2.00" prototype="list.count"/>
+        <node name="frame1" position="7.00,-3.00" prototype="core.frame"/>
+        <node name="grid1" position="9.00,-1.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="15"/>
+            <port name="rows" type="int" value="4"/>
+            <port name="width" type="float" value="4500.0"/>
+            <port name="height" type="float" value="2000.0"/>
+        </node>
+        <node name="group1" position="5.00,4.00" prototype="corevector.group"/>
+        <node name="make_strings1" position="3.00,-1.00" prototype="string.make_strings">
+            <port name="string" type="string" value="CODE"/>
+            <port name="separator" type="string" value=""/>
+        </node>
+        <node name="random_numbers1" position="6.00,-1.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="4"/>
+            <port name="end" type="float" value="300.0"/>
+        </node>
+        <node name="scale1" position="4.00,7.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="200.00,200.00"/>
+        </node>
+        <node name="slice1" position="8.00,1.00" prototype="list.slice"/>
+        <node name="spin" position="3.00,1.00" prototype="core.network" renderedChild="quad_curve1">
+            <node name="centroid1" position="2.00,3.00" prototype="corevector.centroid"/>
+            <node name="group1" position="-1.00,6.00" prototype="corevector.group"/>
+            <node name="quad_curve1" position="-1.00,5.00" prototype="corevector.quad_curve">
+                <port name="point2" type="point" value="0.00,-966.00"/>
+                <port name="t" type="float" value="20.0"/>
+                <port name="distance" type="float" value="100.0"/>
+            </node>
+            <node name="resample1" position="-1.00,1.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+            </node>
+            <node name="textpath1" position="-1.00,-1.00" prototype="corevector.textpath">
+                <port name="text" type="string" value="CODE"/>
+                <port name="font_name" type="string" value="AlrightSans-Bold"/>
+                <port name="font_size" type="float" value="652.0"/>
+            </node>
+            <node name="translate1" position="-1.00,7.00" prototype="corevector.translate"/>
+            <port childReference="resample1.points" min="1.0" name="points" range="value" type="int" value="10" widget="int"/>
+            <port childReference="translate1.translate" name="translate" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="quad_curve1.point2" name="point2" range="value" type="point" value="0.00,-966.00" widget="point"/>
+            <conn input="resample1.shape" output="textpath1"/>
+            <conn input="quad_curve1.point1" output="resample1"/>
+            <conn input="centroid1.shape" output="resample1"/>
+            <conn input="group1.shapes" output="quad_curve1"/>
+            <conn input="translate1.shape" output="group1"/>
+        </node>
+        <conn input="colorize1.shape" output="spin"/>
+        <conn input="spin.points" output="random_numbers1"/>
+        <conn input="count1.list" output="make_strings1"/>
+        <conn input="slice1.size" output="count1"/>
+        <conn input="slice1.list" output="grid1"/>
+        <conn input="spin.translate" output="slice1"/>
+        <conn input="group1.shapes" output="colorize1"/>
+        <conn input="align1.shape" output="group1"/>
+        <conn input="random_numbers1.end" output="frame1"/>
+        <conn input="scale1.shape" output="align1"/>
+    </node>
+</ndbx>

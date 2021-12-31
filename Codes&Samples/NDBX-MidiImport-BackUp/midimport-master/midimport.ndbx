@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="12" type="file" uuid="dd0f3192-df97-4f53-86f9-a3126e7be180">
+    <link href="clojure:midi.clj" rel="functions"/>
+    <node name="root" outputRange="list" renderedChild="colorize2">
+        <node name="align2" position="8.00,13.00" prototype="corevector.align">
+            <port name="halign" type="string" value="left"/>
+        </node>
+        <node name="chan" position="10.00,2.00" prototype="data.lookup">
+            <port name="key" type="string" value="chan"/>
+        </node>
+        <node name="chan_to_color" position="12.00,6.00" prototype="color.hsb_color">
+            <port name="saturation" type="float" value="200.0"/>
+            <port name="brightness" type="float" value="150.0"/>
+            <port name="alpha" type="float" value="200.0"/>
+        </node>
+        <node name="colorize2" position="8.00,14.00" prototype="corevector.colorize"/>
+        <node name="convert_chan" position="12.00,4.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="16.0"/>
+            <port name="target_end" type="float" value="255.0"/>
+        </node>
+        <node name="convert_duration" position="6.00,8.00" prototype="math.convert_range">
+            <port name="target_end" type="float" value="1000.0"/>
+        </node>
+        <node name="convert_pitch" position="9.00,6.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="127.0"/>
+            <port name="target_end" type="float" value="0.0"/>
+        </node>
+        <node name="convert_tick" position="3.00,8.00" prototype="math.convert_range">
+            <port name="target_end" type="float" value="1000.0"/>
+        </node>
+        <node name="duration" position="4.00,2.00" prototype="data.lookup">
+            <port name="key" type="string" value="duration"/>
+        </node>
+        <node name="end_tick" position="3.00,6.00" prototype="math.max"/>
+        <node name="make_point2" position="8.00,10.00" prototype="corevector.make_point"/>
+        <node category="music" description="Import a midi file." function="midi/notes-for-file-java" name="midimport" outputRange="list" outputType="list" prototype="corevector.generator">
+            <port name="file" range="value" type="string" value="examples/988-v07.mid" widget="file"/>
+        </node>
+        <node name="pitch" position="7.00,2.00" prototype="data.lookup">
+            <port name="key" type="string" value="pitch"/>
+        </node>
+        <node name="rect1" position="8.00,12.00" prototype="corevector.rect">
+            <port name="width" type="float" value="20.0"/>
+            <port name="height" type="float" value="5.0"/>
+        </node>
+        <node name="tick" prototype="data.lookup">
+            <port name="key" type="string" value="tick"/>
+        </node>
+        <node name="total_height" position="9.00,4.00" prototype="math.number">
+            <port name="value" type="float" value="500.0"/>
+        </node>
+        <node name="total_width" position="5.00,4.00" prototype="math.number">
+            <port name="value" type="float" value="1000.0"/>
+        </node>
+        <conn input="tick.list" output="midimport"/>
+        <conn input="duration.list" output="midimport"/>
+        <conn input="pitch.list" output="midimport"/>
+        <conn input="chan.list" output="midimport"/>
+        <conn input="align2.shape" output="rect1"/>
+        <conn input="colorize2.shape" output="align2"/>
+        <conn input="make_point2.y" output="convert_pitch"/>
+        <conn input="convert_tick.source_end" output="end_tick"/>
+        <conn input="convert_duration.source_end" output="end_tick"/>
+        <conn input="make_point2.x" output="convert_tick"/>
+        <conn input="rect1.width" output="convert_duration"/>
+        <conn input="colorize2.fill" output="chan_to_color"/>
+        <conn input="chan_to_color.hue" output="convert_chan"/>
+        <conn input="convert_pitch.target_end" output="total_height"/>
+        <conn input="end_tick.values" output="tick"/>
+        <conn input="convert_tick.value" output="tick"/>
+        <conn input="convert_duration.value" output="duration"/>
+        <conn input="convert_pitch.value" output="pitch"/>
+        <conn input="convert_chan.value" output="chan"/>
+        <conn input="convert_tick.target_end" output="total_width"/>
+        <conn input="convert_duration.target_end" output="total_width"/>
+        <conn input="align2.position" output="make_point2"/>
+    </node>
+</ndbx>

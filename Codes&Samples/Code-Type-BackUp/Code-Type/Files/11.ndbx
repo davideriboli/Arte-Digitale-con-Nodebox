@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="85368434-57de-424b-a0f2-90696e340a72">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="colorize4">
+        <node name="colorize1" position="4.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#f866caff"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="colorize2" position="8.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#f866caff"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="colorize3" position="8.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#f866caff"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="colorize4" position="8.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="count1" position="9.00,2.00" prototype="list.count"/>
+        <node name="grid1" position="13.00,0.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="2"/>
+            <port name="rows" type="int" value="2"/>
+            <port name="width" type="float" value="2000.0"/>
+            <port name="height" type="float" value="2000.0"/>
+        </node>
+        <node name="make_point1" position="9.00,6.00" prototype="corevector.make_point"/>
+        <node name="make_strings1" position="9.00,-2.00" prototype="string.make_strings">
+            <port name="string" type="string" value="E;T;Y;P"/>
+        </node>
+        <node name="network1" position="4.00,8.00" prototype="core.network" renderedChild="scale1">
+            <node name="ellipse1" position="3.00,2.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="300.0"/>
+                <port name="height" type="float" value="300.0"/>
+            </node>
+            <node name="frame1" position="1.00,0.00" prototype="core.frame"/>
+            <node name="quad_curve1" position="-1.00,6.00" prototype="corevector.quad_curve">
+                <port name="point2" type="point" value="84.00,0.00"/>
+                <port name="distance" type="float" value="-50.0"/>
+            </node>
+            <node name="resample1" position="3.00,4.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+                <port name="length" type="float" value="5.0"/>
+                <port name="points" type="int" value="104"/>
+            </node>
+            <node name="resample2" position="7.00,5.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+                <port name="length" type="float" value="3.0"/>
+                <port name="points" type="int" value="100"/>
+            </node>
+            <node name="scale1" position="3.00,10.00" prototype="corevector.scale"/>
+            <node name="textpath1" position="7.00,2.00" prototype="corevector.textpath">
+                <port name="text" type="string" value="A"/>
+                <port name="font_name" type="string" value="GalaxiePolaris-Bold"/>
+                <port name="font_size" type="float" value="235.0"/>
+                <port name="position" type="point" value="0.00,93.00"/>
+            </node>
+            <node name="translate1" position="3.00,8.00" prototype="corevector.translate"/>
+            <port childReference="textpath1.text" name="text" range="value" type="string" value="W" widget="string"/>
+            <port childReference="translate1.translate" name="translate" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="scale1.scale" name="scale" range="value" type="point" value="100.00,100.00" widget="point"/>
+            <port childReference="scale1.origin" name="scale_origin" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <conn input="resample2.shape" output="textpath1"/>
+            <conn input="resample1.shape" output="ellipse1"/>
+            <conn input="scale1.shape" output="translate1"/>
+            <conn input="resample2.points" output="frame1"/>
+            <conn input="quad_curve1.point1" output="resample1"/>
+            <conn input="quad_curve1.point2" output="resample2"/>
+            <conn input="translate1.shape" output="quad_curve1"/>
+        </node>
+        <node name="resample1" position="8.00,4.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+        </node>
+        <node name="scale" position="13.00,4.00" prototype="math.number">
+            <port name="value" type="float" value="648.0"/>
+        </node>
+        <node name="shift1" position="9.00,0.00" prototype="list.shift"/>
+        <conn input="shift1.list" output="make_strings1"/>
+        <conn input="count1.list" output="shift1"/>
+        <conn input="resample1.points" output="count1"/>
+        <conn input="network1.scale" output="make_point1"/>
+        <conn input="make_point1.y" output="scale"/>
+        <conn input="make_point1.x" output="scale"/>
+        <conn input="colorize1.shape" output="network1"/>
+        <conn input="network1.text" output="shift1"/>
+        <conn input="colorize2.shape" output="network1"/>
+        <conn input="colorize3.shape" output="network1"/>
+        <conn input="colorize4.shape" output="network1"/>
+        <conn input="network1.scale_origin" output="grid1"/>
+        <conn input="network1.translate" output="grid1"/>
+    </node>
+</ndbx>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="e715cb3f-deef-452c-be83-1057c82f69ef">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="Forme" position="-12.00,7.00" prototype="core.network" renderedChild="compound1">
+            <node name="add1" position="-3.00,5.00" prototype="math.add">
+                <port name="value2" type="float" value="45.0"/>
+            </node>
+            <node name="align1" position="-9.00,11.00" prototype="corevector.align"/>
+            <node name="align2" position="-16.00,10.00" prototype="corevector.align"/>
+            <node name="colorize1" position="-9.00,5.00" prototype="corevector.colorize"/>
+            <node name="colorize2" position="-16.00,6.00" prototype="corevector.colorize"/>
+            <node name="compound1" position="-13.00,12.00" prototype="corevector.compound">
+                <port name="function" type="string" value="intersected"/>
+            </node>
+            <node name="ellipse1" position="-16.00,5.00" prototype="corevector.ellipse"/>
+            <node name="frame1" position="-4.00,3.00" prototype="core.frame"/>
+            <node name="grid1" position="-8.00,8.00" prototype="corevector.grid">
+                <port name="columns" type="int" value="5"/>
+                <port name="rows" type="int" value="6"/>
+                <port name="width" type="float" value="500.0"/>
+                <port name="height" type="float" value="500.0"/>
+                <port name="position" type="point" value="-69.65,4.35"/>
+            </node>
+            <node name="grid2" position="-13.00,6.00" prototype="corevector.grid">
+                <port name="columns" type="int" value="6"/>
+                <port name="rows" type="int" value="6"/>
+                <port name="width" type="float" value="500.0"/>
+                <port name="height" type="float" value="500.0"/>
+            </node>
+            <node name="group1" position="-9.00,10.00" prototype="corevector.group"/>
+            <node name="group2" position="-16.00,9.00" prototype="corevector.group"/>
+            <node name="rect1" position="-9.00,4.00" prototype="corevector.rect"/>
+            <node name="rotate1" position="-9.00,7.00" prototype="corevector.rotate">
+                <port name="angle" type="float" value="12.0"/>
+            </node>
+            <node name="sample1" position="-4.00,8.00" prototype="math.sample">
+                <port name="amount" type="int" value="30"/>
+            </node>
+            <node name="translate1" position="-9.00,9.00" prototype="corevector.translate"/>
+            <node name="translate2" position="-16.00,8.00" prototype="corevector.translate"/>
+            <conn input="add1.value1" output="frame1"/>
+            <conn input="sample1.start" output="frame1"/>
+            <conn input="sample1.end" output="add1"/>
+            <conn input="translate1.shape" output="rotate1"/>
+            <conn input="rotate1.angle" output="sample1"/>
+            <conn input="translate1.translate" output="grid1"/>
+            <conn input="group1.shapes" output="translate1"/>
+            <conn input="translate2.translate" output="grid2"/>
+            <conn input="group2.shapes" output="translate2"/>
+            <conn input="align1.shape" output="group1"/>
+            <conn input="align2.shape" output="group2"/>
+            <conn input="compound1.shape1" output="align2"/>
+            <conn input="compound1.shape2" output="align1"/>
+            <conn input="colorize1.shape" output="rect1"/>
+            <conn input="rotate1.shape" output="colorize1"/>
+            <conn input="translate2.shape" output="colorize2"/>
+            <conn input="colorize2.shape" output="ellipse1"/>
+        </node>
+        <node name="Nomi" position="-8.00,6.00" prototype="core.network" renderedChild="colorize4">
+            <node name="add2" position="11.00,5.00" prototype="math.add">
+                <port name="value2" type="float" value="50.0"/>
+            </node>
+            <node name="colorize4" position="3.00,12.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#afafafff"/>
+            </node>
+            <node name="count1" position="8.00,6.00" prototype="list.count"/>
+            <node name="frame2" position="8.00,3.00" prototype="core.frame"/>
+            <node name="grid3" position="4.00,9.00" prototype="corevector.grid">
+                <port name="columns" type="int" value="5"/>
+                <port name="rows" type="int" value="6"/>
+                <port name="width" type="float" value="2000.0"/>
+                <port name="height" type="float" value="2000.0"/>
+                <port name="position" type="point" value="-69.65,4.35"/>
+            </node>
+            <node name="group3" position="3.00,11.00" prototype="corevector.group"/>
+            <node name="make_string" position="3.00,3.00" prototype="string.make_strings">
+                <port name="string" type="string" value="Paola Antonelli; Max Bill;Stewart Brand;Muriel Cooper;Wim Crouel;Keetra Dean Dixon;Hugh Dubberly;Haakon Faste;Ben Fry;Karl Gestner;April Greiman;Alan C. Kay;Brenda Laurel;Sol Lewitt;Zuzana Licko;Jhon Maeda;P. Scott Makela;Luna Maurer;Bruno Munari;Edo Paulus;Sharon Poggenpohl;Jonathan Puckey;Casey Reas;Ivan E. Southerland;Ladislav Sutnar;Erik Van Blockland;Just Van Rossum;Rudy Vanderlans;Khoi Vinh;Roel Wouters"/>
+            </node>
+            <node name="rotate2" position="3.00,8.00" prototype="corevector.rotate">
+                <port name="angle" type="float" value="12.0"/>
+            </node>
+            <node name="sample2" position="8.00,7.00" prototype="math.sample"/>
+            <node name="textpath1" position="3.00,4.00" prototype="corevector.textpath">
+                <port name="font_name" type="string" value="UniversLTCYR-65Bold"/>
+                <port name="font_size" type="float" value="50.0"/>
+            </node>
+            <node name="translate3" position="3.00,10.00" prototype="corevector.translate"/>
+            <conn input="textpath1.text" output="make_string"/>
+            <conn input="add2.value1" output="frame2"/>
+            <conn input="sample2.start" output="frame2"/>
+            <conn input="sample2.amount" output="count1"/>
+            <conn input="sample2.end" output="add2"/>
+            <conn input="rotate2.shape" output="textpath1"/>
+            <conn input="translate3.shape" output="rotate2"/>
+            <conn input="rotate2.angle" output="sample2"/>
+            <conn input="count1.list" output="textpath1"/>
+            <conn input="translate3.translate" output="grid3"/>
+            <conn input="group3.shapes" output="translate3"/>
+            <conn input="colorize4.shape" output="group3"/>
+        </node>
+        <node name="align1" position="-8.00,8.00" prototype="corevector.align"/>
+        <node name="combine1" position="-12.00,9.00" prototype="list.combine"/>
+        <node name="scale1" position="-8.00,7.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="24.00,24.00"/>
+        </node>
+        <conn input="combine1.list1" output="Forme"/>
+        <conn input="scale1.shape" output="Nomi"/>
+        <conn input="align1.shape" output="scale1"/>
+        <conn input="combine1.list2" output="align1"/>
+    </node>
+</ndbx>

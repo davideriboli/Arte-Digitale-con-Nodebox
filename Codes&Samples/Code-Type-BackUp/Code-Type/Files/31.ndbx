@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="0370d25d-1e8a-4194-b371-d5bc1e60ffa8">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="reverse1">
+        <node name="colorize1" position="4.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="divide1" position="7.00,5.00" prototype="math.divide">
+            <port name="value2" type="float" value="12.0"/>
+        </node>
+        <node name="frame1" position="4.00,1.00" prototype="core.frame"/>
+        <node name="polygon1" position="4.00,5.00" prototype="corevector.polygon">
+            <port name="sides" type="int" value="12"/>
+        </node>
+        <node name="range1" position="7.00,3.00" prototype="math.range">
+            <port name="start" type="float" value="50.0"/>
+            <port name="end" type="float" value="500.0"/>
+            <port name="step" type="float" value="10.0"/>
+        </node>
+        <node name="reverse1" position="4.00,12.00" prototype="list.reverse"/>
+        <node name="rotate1" position="4.00,8.00" prototype="corevector.rotate"/>
+        <conn input="colorize1.shape" output="rotate1"/>
+        <conn input="reverse1.list" output="colorize1"/>
+        <conn input="divide1.value1" output="range1"/>
+        <conn input="rotate1.angle" output="divide1"/>
+        <conn input="polygon1.radius" output="range1"/>
+        <conn input="rotate1.shape" output="polygon1"/>
+        <conn input="polygon1.sides" output="frame1"/>
+    </node>
+</ndbx>

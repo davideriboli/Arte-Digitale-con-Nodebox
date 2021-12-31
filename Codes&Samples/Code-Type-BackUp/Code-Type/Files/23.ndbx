@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="85368434-57de-424b-a0f2-90696e340a72">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="ellipse2">
+        <node name="ellipse1" position="11.00,2.00" prototype="corevector.ellipse"/>
+        <node name="ellipse2" position="11.00,6.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="3.0"/>
+            <port name="height" type="float" value="3.0"/>
+        </node>
+        <node name="point1" position="11.00,4.00" prototype="corevector.point"/>
+        <node name="random_numbers1" position="14.00,4.00" prototype="math.random_numbers"/>
+        <node name="range1" position="11.00,0.00" prototype="math.range">
+            <port name="end" type="float" value="500.0"/>
+            <port name="step" type="float" value="30.0"/>
+        </node>
+        <node name="resample2" position="11.00,3.00" prototype="corevector.resample"/>
+        <conn input="resample2.shape" output="ellipse1"/>
+        <conn input="point1.value" output="resample2"/>
+        <conn input="ellipse1.width" output="range1"/>
+        <conn input="ellipse1.height" output="range1"/>
+        <conn input="ellipse2.position" output="point1"/>
+    </node>
+</ndbx>

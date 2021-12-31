@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="42d5fcfe-aa4e-4c9d-801c-9e89ada3bbb1">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="colorize1" position="3.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="0.5"/>
+        </node>
+        <node name="count1" position="6.00,5.00" prototype="list.count"/>
+        <node name="grid1" position="6.00,3.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="3"/>
+            <port name="rows" type="int" value="5"/>
+            <port name="width" type="float" value="206.0"/>
+            <port name="height" type="float" value="556.0"/>
+        </node>
+        <node name="make_strings1" position="3.00,3.00" prototype="string.make_strings">
+            <port name="string" type="string" value="DIMENSION"/>
+            <port name="separator" type="string" value=""/>
+        </node>
+        <node name="network1" position="3.00,8.00" prototype="core.network" renderedChild="group1">
+            <node name="group1" position="-1.00,9.00" prototype="corevector.group"/>
+            <node name="polygon1" position="-1.00,7.00" prototype="corevector.polygon">
+                <port name="radius" type="float" value="14.0"/>
+                <port name="align" type="boolean" value="true"/>
+            </node>
+            <node name="resample1" position="-1.00,4.00" prototype="corevector.resample">
+                <port name="length" type="float" value="3.0"/>
+            </node>
+            <node name="textpath1" position="-1.00,3.00" prototype="corevector.textpath">
+                <port name="text" type="string" value="A"/>
+                <port name="font_name" type="string" value="GothamNarrow-Bold"/>
+                <port name="font_size" type="float" value="99.0"/>
+                <port name="align" type="string" value="LEFT"/>
+            </node>
+            <port childReference="textpath1.text" name="text" range="value" type="string" value="A" widget="string"/>
+            <port childReference="textpath1.position" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="polygon1.radius" min="0.0" name="radius" range="value" type="float" value="14.0" widget="float"/>
+            <port childReference="resample1.length" min="1.0" name="length" range="value" type="float" value="3.0" widget="float"/>
+            <conn input="resample1.shape" output="textpath1"/>
+            <conn input="polygon1.position" output="resample1"/>
+            <conn input="group1.shapes" output="polygon1"/>
+        </node>
+        <node name="slice1" position="6.00,6.00" prototype="list.slice"/>
+        <conn input="count1.list" output="make_strings1"/>
+        <conn input="slice1.size" output="count1"/>
+        <conn input="slice1.list" output="grid1"/>
+        <conn input="network1.text" output="make_strings1"/>
+        <conn input="network1.position" output="slice1"/>
+        <conn input="colorize1.shape" output="network1"/>
+    </node>
+</ndbx>

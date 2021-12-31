@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="458fad23-a2a0-4541-a556-a7104f743cb6">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="colorize3">
+        <node name="centroid1" position="21.00,-1.00" prototype="corevector.centroid"/>
+        <node name="centroid2" position="27.00,-1.00" prototype="corevector.centroid"/>
+        <node name="colorize3" position="26.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="7.0"/>
+        </node>
+        <node name="combine1" position="26.00,8.00" prototype="list.combine"/>
+        <node name="combine2" position="33.00,3.00" prototype="list.combine"/>
+        <node name="combine3" position="24.00,6.00" prototype="list.combine"/>
+        <node name="import_svg1" position="33.00,-3.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="/Users/Q/Desktop/2013-Spring/0_PlaywithNode/nc_code_e.svg"/>
+        </node>
+        <node name="import_svg2" position="18.00,-3.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="/Users/Q/Desktop/2013-Spring/0_PlaywithNode/nc_code_c.svg"/>
+        </node>
+        <node name="import_svg3" position="24.00,-3.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="/Users/Q/Desktop/2013-Spring/0_PlaywithNode/nc_code_o.svg"/>
+        </node>
+        <node name="import_svg5" position="39.00,-3.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="nc_code_d.svg"/>
+        </node>
+        <node name="make_point1" position="27.00,-2.00" prototype="corevector.make_point">
+            <port name="y" type="float" value="100.0"/>
+        </node>
+        <node name="make_point3" position="42.00,-2.00" prototype="corevector.make_point">
+            <port name="y" type="float" value="100.0"/>
+        </node>
+        <node name="make_point4" position="30.00,-2.00" prototype="corevector.make_point"/>
+        <node name="sample1" position="27.00,-3.00" prototype="math.sample">
+            <port name="amount" type="int" value="8"/>
+            <port name="start" type="float" value="25.0"/>
+        </node>
+        <node name="sample2" position="21.00,-3.00" prototype="math.sample"/>
+        <node name="sample3" position="30.00,-3.00" prototype="math.sample">
+            <port name="amount" type="int" value="15"/>
+            <port name="start" type="float" value="-4.0"/>
+            <port name="end" type="float" value="284.0"/>
+        </node>
+        <node name="sample4" position="42.00,-3.00" prototype="math.sample"/>
+        <node name="scale1" position="18.00,1.00" prototype="corevector.scale"/>
+        <node name="scale2" position="24.00,1.00" prototype="corevector.scale"/>
+        <node name="scale4" position="39.00,1.00" prototype="corevector.scale"/>
+        <node name="translate2" position="18.00,2.00" prototype="corevector.translate"/>
+        <node name="translate3" position="24.00,2.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="300.00,0.00"/>
+        </node>
+        <node name="translate4" position="33.00,2.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="881.00,-140.00"/>
+        </node>
+        <node name="translate5" position="39.00,3.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="605.00,0.00"/>
+        </node>
+        <node name="translate6" position="33.00,1.00" prototype="corevector.translate"/>
+        <conn input="scale1.shape" output="import_svg2"/>
+        <conn input="centroid1.shape" output="import_svg2"/>
+        <conn input="scale1.origin" output="centroid1"/>
+        <conn input="scale2.shape" output="import_svg3"/>
+        <conn input="centroid2.shape" output="import_svg3"/>
+        <conn input="scale2.origin" output="centroid2"/>
+        <conn input="scale2.scale" output="make_point1"/>
+        <conn input="make_point1.x" output="sample1"/>
+        <conn input="translate2.shape" output="scale1"/>
+        <conn input="combine3.list1" output="translate2"/>
+        <conn input="translate3.shape" output="scale2"/>
+        <conn input="combine3.list2" output="translate3"/>
+        <conn input="scale1.scale" output="sample2"/>
+        <conn input="scale4.shape" output="import_svg5"/>
+        <conn input="scale4.scale" output="make_point3"/>
+        <conn input="make_point3.x" output="sample4"/>
+        <conn input="translate5.shape" output="scale4"/>
+        <conn input="combine3.list3" output="combine2"/>
+        <conn input="combine2.list1" output="translate4"/>
+        <conn input="translate6.shape" output="import_svg1"/>
+        <conn input="translate4.shape" output="translate6"/>
+        <conn input="make_point4.y" output="sample3"/>
+        <conn input="translate6.translate" output="make_point4"/>
+        <conn input="combine1.list1" output="combine3"/>
+        <conn input="colorize3.shape" output="combine1"/>
+        <conn input="combine1.list3" output="translate5"/>
+    </node>
+</ndbx>

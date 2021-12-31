@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="9225b6b8-73f7-4980-890f-a0f83b2ebf0b">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="centroid1" position="5.00,14.00" prototype="corevector.centroid"/>
+        <node name="colorize1" position="8.00,16.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="10.0"/>
+        </node>
+        <node name="colorize2" position="5.00,16.00" prototype="corevector.colorize"/>
+        <node name="colorize3" position="2.00,16.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+        </node>
+        <node name="combine1" position="2.00,19.00" prototype="list.combine"/>
+        <node name="connect1" position="8.00,15.00" prototype="corevector.connect">
+            <port name="closed" type="boolean" value="false"/>
+        </node>
+        <node name="ellipse1" position="5.00,15.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="50.0"/>
+            <port name="height" type="float" value="50.0"/>
+        </node>
+        <node name="freehand1" position="5.00,7.00" prototype="corevector.freehand">
+            <port name="path" type="string" value="M-101.39,-40.16  -101.39,-35.97  -101.39,-33.87  -101.39,-30.72  -101.39,-28.63  -101.39,-25.48  -101.39,-23.38  -101.39,-20.23  -101.39,-18.14  -100.34,-11.84  -100.34,-9.75  -98.24,-4.50  -96.14,0.74  -95.09,5.99  -94.04,8.08  -91.95,11.23  -90.90,13.33  -87.75,15.42  -84.61,18.57  -80.41,20.67  -76.21,23.82  -73.07,28.01  -66.78,32.21  -59.43,36.40  -52.09,39.55  -42.65,43.74  -37.41,44.79  -33.21,45.84  -29.02,46.89  -24.82,46.89  -20.63,46.89  -16.43,46.89  -13.29,45.84  -11.19,44.79  -8.04,42.69  -4.90,40.60  -1.75,37.45  2.45,34.30  8.74,30.11  13.98,25.91  19.23,22.77  24.47,18.57  28.67,15.42  31.81,11.23  36.01,7.03  39.16,2.84  42.30,0.74  46.50,-3.45  49.64,-7.65  50.69,-8.70  54.89,-11.84  58.03,-14.99  60.13,-18.14  62.23,-20.23  64.33,-22.33  68.52,-25.48  71.67,-28.63  75.86,-30.72  81.11,-33.87  84.25,-35.97  90.55,-39.11  95.79,-41.21  101.04,-42.26  107.33,-44.36  114.67,-45.41  119.91,-46.46  126.21,-47.50  131.45,-47.50  135.65,-47.50  136.70,-47.50  140.89,-47.50  147.18,-47.50  155.57,-47.50  163.96,-48.55  169.21,-48.55  175.50,-48.55  180.75,-48.55  185.99,-48.55  192.28,-48.55  196.48,-48.55  200.67,-48.55  204.87,-48.55  208.01,-47.50  211.16,-45.41  212.21,-45.41  216.41,-45.41  218.50,-44.36  220.60,-44.36  221.65,-44.36  222.70,-43.31  223.75,-43.31  224.80,-42.26  226.89,-42.26  227.94,-42.26  230.04,-41.21  231.09,-41.21  231.09,-40.16  233.19,-40.16  234.24,-39.11  235.28,-39.11  235.28,-37.02  236.33,-37.02  236.33,-35.97  237.38,-35.97  237.38,-34.92  239.48,-32.82  241.58,-29.67  243.67,-26.53  245.77,-24.43  246.82,-21.28  248.92,-19.19  249.97,-17.09  251.02,-16.04  252.07,-13.94  252.07,-11.84  252.07,-10.80  253.11,-7.65 "/>
+        </node>
+        <node name="make_strings1" position="2.00,9.00" prototype="string.make_strings">
+            <port name="string" type="string" value="earthworm"/>
+            <port name="separator" type="string" value=""/>
+        </node>
+        <node name="point1" position="5.00,9.00" prototype="corevector.point"/>
+        <node name="resample1" position="5.00,8.00" prototype="corevector.resample">
+            <port name="length" type="float" value="60.0"/>
+        </node>
+        <node name="textpath1" position="2.00,12.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="Brown-BoldAlt"/>
+            <port name="font_size" type="float" value="16.0"/>
+        </node>
+        <conn input="textpath1.text" output="make_strings1"/>
+        <conn input="centroid1.shape" output="textpath1"/>
+        <conn input="ellipse1.position" output="centroid1"/>
+        <conn input="colorize2.shape" output="ellipse1"/>
+        <conn input="resample1.shape" output="freehand1"/>
+        <conn input="point1.value" output="resample1"/>
+        <conn input="textpath1.position" output="point1"/>
+        <conn input="colorize3.shape" output="textpath1"/>
+        <conn input="combine1.list3" output="colorize3"/>
+        <conn input="combine1.list2" output="colorize2"/>
+        <conn input="connect1.points" output="centroid1"/>
+        <conn input="colorize1.shape" output="connect1"/>
+        <conn input="combine1.list1" output="colorize1"/>
+    </node>
+</ndbx>

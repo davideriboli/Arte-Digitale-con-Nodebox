@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="228751c7-1a9e-4d68-8c24-2a23572dddb6">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="scale1">
+        <node name="colorize1" position="1.00,3.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#0000ff00"/>
+            <port name="stroke" type="color" value="#5500ffff"/>
+            <port name="strokeWidth" type="float" value="0.25"/>
+        </node>
+        <node name="ellipse1" position="1.00,1.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="7.0"/>
+            <port name="height" type="float" value="7.0"/>
+        </node>
+        <node name="random_numbers1" position="13.00,-1.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="255"/>
+            <port name="end" type="float" value="255.0"/>
+            <port name="seed" type="int" value="1"/>
+        </node>
+        <node name="range1" position="9.00,-1.00" prototype="math.range">
+            <port name="start" type="float" value="1.0"/>
+            <port name="end" type="float" value="255.0"/>
+        </node>
+        <node name="range2" position="5.00,-1.00" prototype="math.range">
+            <port name="start" type="float" value="1.0"/>
+            <port name="end" type="float" value="255.0"/>
+        </node>
+        <node name="resample1" position="1.00,-2.00" prototype="corevector.resample">
+            <port name="length" type="float" value="1.0"/>
+        </node>
+        <node name="rgb_color1" position="5.00,2.00" prototype="color.rgb_color"/>
+        <node name="scale1" position="1.00,5.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="200.00,200.00"/>
+        </node>
+        <node name="textpath1" position="1.00,-4.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="d i g i t a l d e s i g n t h e o r y "/>
+            <port name="font_name" type="string" value="DomaineText-Black"/>
+            <port name="font_size" type="float" value="40.0"/>
+            <port name="align" type="string" value="LEFT"/>
+            <port name="width" type="float" value="200.0"/>
+        </node>
+        <conn input="resample1.shape" output="textpath1"/>
+        <conn input="ellipse1.position" output="resample1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="colorize1.stroke" output="rgb_color1"/>
+        <conn input="rgb_color1.blue" output="range2"/>
+        <conn input="rgb_color1.red" output="random_numbers1"/>
+        <conn input="scale1.shape" output="colorize1"/>
+        <conn input="rgb_color1.range" output="range1"/>
+    </node>
+</ndbx>

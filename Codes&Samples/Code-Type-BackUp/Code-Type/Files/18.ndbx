@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="6474efb1-aaae-4561-8338-5cffd5a46cfe">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="Group" position="3.00,9.00" prototype="core.network" renderedChild="translate1">
+            <node name="combine1" position="1.00,8.00" prototype="list.combine"/>
+            <node name="ellipse1" position="-1.00,2.00" prototype="corevector.ellipse"/>
+            <node name="ellipse2" position="-1.00,6.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="2.0"/>
+                <port name="height" type="float" value="2.0"/>
+            </node>
+            <node name="integer1" position="3.00,2.00" prototype="math.integer"/>
+            <node name="line1" position="3.00,6.00" prototype="corevector.line"/>
+            <node name="random_numbers1" position="3.00,1.00" prototype="math.random_numbers">
+                <port name="amount" type="int" value="1"/>
+                <port name="start" type="float" value="3.0"/>
+                <port name="end" type="float" value="30.0"/>
+            </node>
+            <node name="resample1" position="-1.00,4.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+            </node>
+            <node name="translate1" position="1.00,10.00" prototype="corevector.translate"/>
+            <port childReference="translate1.translate" name="point" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="random_numbers1.end" name="max" range="value" type="float" value="30.0" widget="float"/>
+            <conn input="integer1.value" output="random_numbers1"/>
+            <conn input="resample1.shape" output="ellipse1"/>
+            <conn input="ellipse2.position" output="resample1"/>
+            <conn input="resample1.points" output="integer1"/>
+            <conn input="line1.point2" output="resample1"/>
+            <conn input="combine1.list1" output="ellipse2"/>
+            <conn input="combine1.list2" output="line1"/>
+            <conn input="translate1.shape" output="combine1"/>
+        </node>
+        <node name="colorize1" position="3.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="colorize2" position="9.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#c8c8c8ff"/>
+        </node>
+        <node name="combine1" position="6.00,13.00" prototype="list.combine"/>
+        <node name="ellipse1" position="9.00,9.00" prototype="corevector.ellipse"/>
+        <node name="grid1" position="3.00,1.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="8"/>
+            <port name="rows" type="int" value="15"/>
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="1500.0"/>
+        </node>
+        <node name="multiply1" position="12.00,7.00" prototype="math.multiply"/>
+        <node name="random_numbers1" position="6.00,1.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="11"/>
+        </node>
+        <node name="range1" position="9.00,5.00" prototype="math.range">
+            <port name="end" type="float" value="100.0"/>
+            <port name="step" type="float" value="3.0"/>
+        </node>
+        <conn input="Group.point" output="grid1"/>
+        <conn input="Group.max" output="random_numbers1"/>
+        <conn input="colorize1.shape" output="Group"/>
+        <conn input="colorize2.shape" output="ellipse1"/>
+        <conn input="ellipse1.position" output="grid1"/>
+        <conn input="multiply1.value1" output="range1"/>
+        <conn input="ellipse1.width" output="multiply1"/>
+        <conn input="ellipse1.height" output="multiply1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="combine1.list1" output="colorize2"/>
+    </node>
+</ndbx>

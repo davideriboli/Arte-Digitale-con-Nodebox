@@ -1,0 +1,93 @@
+[
+  {
+    "path": "code/13-tilling.ndbx",
+    "name": "13-tilling.ndbx",
+    "size": 3966,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/12-textFX.ndbx",
+    "name": "12-textFX.ndbx",
+    "size": 2482,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/11-spirograph.ndbx",
+    "name": "11-spirograph.ndbx",
+    "size": 14412,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/10-sorting.ndbx",
+    "name": "10-sorting.ndbx",
+    "size": 3677,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/09-binary-operation.ndbx",
+    "name": "09-binary-operation.ndbx",
+    "size": 3209,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/08-svg/08-svg.ndbx",
+    "name": "08-svg.ndbx",
+    "size": 2222,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/07-template.ndbx",
+    "name": "07-template.ndbx",
+    "size": 2870,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/06-transformations.ndbx",
+    "name": "06-transformations.ndbx",
+    "size": 3986,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/05-copy.ndbx",
+    "name": "05-copy.ndbx",
+    "size": 3522,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/04-grid.ndbx",
+    "name": "04-grid.ndbx",
+    "size": 1937,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/03-text.ndbx",
+    "name": "03-text.ndbx",
+    "size": 1475,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/02-lines.ndbx",
+    "name": "02-lines.ndbx",
+    "size": 2136,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
+    "path": "code/01-primitives.ndbx",
+    "name": "01-primitives.ndbx",
+    "size": 1880,
+    "extension": ".ndbx",
+    "type": "file"
+  }
+]

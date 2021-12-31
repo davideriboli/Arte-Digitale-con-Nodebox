@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="61695cdd-aa24-4c60-a0c4-ebdb26c88b17">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="Group" position="-5.00,2.00" prototype="core.network" renderedChild="translate1">
+            <node name="combine1" position="1.00,8.00" prototype="list.combine"/>
+            <node name="ellipse1" position="-1.00,2.00" prototype="corevector.ellipse"/>
+            <node name="ellipse2" position="-1.00,6.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="2.0"/>
+                <port name="height" type="float" value="2.0"/>
+            </node>
+            <node name="integer1" position="3.00,2.00" prototype="math.integer"/>
+            <node name="line1" position="3.00,6.00" prototype="corevector.line"/>
+            <node name="random_numbers1" position="3.00,1.00" prototype="math.random_numbers">
+                <port name="amount" type="int" value="1"/>
+                <port name="start" type="float" value="3.0"/>
+                <port name="end" type="float" value="30.0"/>
+            </node>
+            <node name="resample1" position="-1.00,4.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+            </node>
+            <node name="translate1" position="1.00,10.00" prototype="corevector.translate"/>
+            <port childReference="translate1.translate" description="" label="" name="point" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="random_numbers1.end" description="" label="" name="max" range="value" type="float" value="30.0" widget="float"/>
+            <conn input="integer1.value" output="random_numbers1"/>
+            <conn input="resample1.shape" output="ellipse1"/>
+            <conn input="ellipse2.position" output="resample1"/>
+            <conn input="resample1.points" output="integer1"/>
+            <conn input="line1.point2" output="resample1"/>
+            <conn input="combine1.list1" output="ellipse2"/>
+            <conn input="combine1.list2" output="line1"/>
+            <conn input="translate1.shape" output="combine1"/>
+        </node>
+        <node name="colorize1" position="4.00,0.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#29ff2934"/>
+        </node>
+        <node name="combine1" position="3.00,7.00" prototype="list.combine"/>
+        <node name="ellipse1" position="4.00,-1.00" prototype="corevector.ellipse"/>
+        <node name="grid1" position="-5.00,0.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="6"/>
+            <port name="rows" type="int" value="6"/>
+            <port name="width" type="float" value="620.0"/>
+            <port name="height" type="float" value="620.0"/>
+        </node>
+        <node name="grid2" position="8.00,-3.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="6"/>
+            <port name="rows" type="int" value="6"/>
+            <port name="width" type="float" value="620.0"/>
+            <port name="height" type="float" value="620.0"/>
+        </node>
+        <node name="hsb_color1" position="9.00,0.00" prototype="color.hsb_color">
+            <port name="saturation" type="float" value="105.0"/>
+            <port name="brightness" type="float" value="341.0"/>
+            <port name="alpha" type="float" value="115.0"/>
+            <port name="range" type="float" value="263.0"/>
+        </node>
+        <node name="random_numbers1" position="-1.00,0.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="33"/>
+            <port name="start" type="float" value="9.0"/>
+            <port name="end" type="float" value="64.0"/>
+        </node>
+        <node name="sample1" position="5.00,-3.00" prototype="math.sample">
+            <port name="amount" type="int" value="4"/>
+            <port name="start" type="float" value="52.0"/>
+            <port name="end" type="float" value="113.0"/>
+        </node>
+        <node name="sample2" position="9.00,-1.00" prototype="math.sample">
+            <port name="amount" type="int" value="5"/>
+            <port name="start" type="float" value="50.0"/>
+            <port name="end" type="float" value="150.0"/>
+        </node>
+        <node name="translate1" position="7.00,2.00" prototype="corevector.translate"/>
+        <conn input="Group.point" output="grid1"/>
+        <conn input="translate1.translate" output="grid2"/>
+        <conn input="combine1.list1" output="Group"/>
+        <conn input="combine1.list2" output="translate1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="translate1.shape" output="colorize1"/>
+        <conn input="Group.max" output="random_numbers1"/>
+        <conn input="ellipse1.width" output="sample1"/>
+        <conn input="ellipse1.height" output="sample1"/>
+        <conn input="hsb_color1.hue" output="sample2"/>
+        <conn input="colorize1.fill" output="hsb_color1"/>
+    </node>
+</ndbx>

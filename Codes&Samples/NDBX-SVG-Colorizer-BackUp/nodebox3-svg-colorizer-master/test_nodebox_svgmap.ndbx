@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6984f4d5-7bcc-40b7-9d00-d8d739239b6b">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <link href="python:include/list_compare.py" rel="functions"/>
+    <link href="python:include/loader.py" rel="functions"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="NET_SORTLIST" position="-71.00,11.00" prototype="core.network" renderedChild="combine8">
+            <node name="combine6" position="-57.00,10.00" prototype="list.combine"/>
+            <node name="combine7" position="-54.00,10.00" prototype="list.combine"/>
+            <node name="combine8" position="-54.00,12.00" prototype="list.combine"/>
+            <node name="combine9" position="-51.00,10.00" prototype="list.combine"/>
+            <node name="keys1" position="-53.00,-6.00" prototype="list.keys"/>
+            <node name="slice1" position="-76.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="11"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice16" position="-73.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="15"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice17" position="-70.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="13"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice18" position="-61.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="14"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice19" position="-64.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="12"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice20" position="-67.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="2"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice21" position="-52.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="8"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice24" position="-58.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="5"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice25" position="-49.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="1"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice26" position="-55.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="9"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice27" position="-43.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="10"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice28" position="-37.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="4"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice29" position="-40.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="3"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice30" position="-31.00,1.00" prototype="list.slice">
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice31" position="-34.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="6"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <node name="slice32" position="-46.00,1.00" prototype="list.slice">
+                <port name="start_index" type="int" value="7"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <port childReference="keys1.maps" description="The input map." label="" name="maps" range="list" type="list" widget="none"/>
+            <conn input="slice1.list" output="keys1"/>
+            <conn input="slice16.list" output="keys1"/>
+            <conn input="slice17.list" output="keys1"/>
+            <conn input="slice20.list" output="keys1"/>
+            <conn input="slice19.list" output="keys1"/>
+            <conn input="slice18.list" output="keys1"/>
+            <conn input="slice24.list" output="keys1"/>
+            <conn input="slice26.list" output="keys1"/>
+            <conn input="slice21.list" output="keys1"/>
+            <conn input="slice25.list" output="keys1"/>
+            <conn input="slice27.list" output="keys1"/>
+            <conn input="slice29.list" output="keys1"/>
+            <conn input="slice28.list" output="keys1"/>
+            <conn input="slice31.list" output="keys1"/>
+            <conn input="slice30.list" output="keys1"/>
+            <conn input="slice32.list" output="keys1"/>
+            <conn input="combine8.list1" output="combine6"/>
+            <conn input="combine8.list2" output="combine7"/>
+            <conn input="combine8.list3" output="combine9"/>
+            <conn input="combine6.list1" output="slice1"/>
+            <conn input="combine6.list2" output="slice16"/>
+            <conn input="combine7.list2" output="slice21"/>
+            <conn input="combine6.list3" output="slice17"/>
+            <conn input="combine6.list4" output="slice20"/>
+            <conn input="combine7.list3" output="slice25"/>
+            <conn input="combine7.list5" output="slice27"/>
+            <conn input="combine6.list5" output="slice19"/>
+            <conn input="combine6.list6" output="slice18"/>
+            <conn input="combine7.list6" output="slice29"/>
+            <conn input="combine7.list7" output="slice28"/>
+            <conn input="combine6.list7" output="slice24"/>
+            <conn input="combine7.list1" output="slice26"/>
+            <conn input="combine7.list4" output="slice32"/>
+            <conn input="combine9.list1" output="slice31"/>
+            <conn input="combine9.list2" output="slice30"/>
+        </node>
+        <node name="colorize1" position="-60.00,27.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#a50000ff"/>
+        </node>
+        <node name="colorize15" position="-73.00,22.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#bd0000ff"/>
+            <port name="strokeWidth" type="float" value="0.5"/>
+        </node>
+        <node name="combine1" position="-67.00,32.00" prototype="list.combine"/>
+        <node name="count1" position="-60.00,19.00" prototype="list.count"/>
+        <node name="divide1" position="-56.00,20.00" prototype="math.divide">
+            <port name="value2" type="float" value="100.0"/>
+        </node>
+        <node name="grid1" position="-60.00,21.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="1"/>
+            <port name="rows" type="int" value="6"/>
+            <port name="position" type="point" value="0.00,22.00"/>
+        </node>
+        <node name="import_svg2" position="-76.00,14.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="assets/Deutschland_Bundesla╠ênder_mit_Informationsfreiheitsgesetzgebung.svg"/>
+        </node>
+        <node function="list_compare/compare" name="list_compare16" outputType="string" position="-72.00,19.00">
+            <port description="" label="" name="number" range="value" type="int" value="8900" widget="int"/>
+            <port description="" label="" name="list_values" range="list" type="list" widget="none"/>
+            <port description="" label="" name="list_ref" range="list" type="list" widget="none"/>
+        </node>
+        <node category="Load file json" function="loader/load_file" name="load_jsonfile1" outputType="string" position="-68.00,5.00">
+            <port description="" label="" name="file" range="value" type="string" value="assets/data.json" widget="file"/>
+        </node>
+        <node name="query_json3" position="-72.00,9.00" prototype="network.query_json">
+            <port name="query" type="string" value="$.values"/>
+        </node>
+        <node name="query_json4" position="-65.00,9.00" prototype="network.query_json">
+            <port name="query" type="string" value="$.colors"/>
+        </node>
+        <node name="rect1" position="-60.00,24.00" prototype="corevector.rect">
+            <port name="width" type="float" value="17.0"/>
+            <port name="height" type="float" value="17.0"/>
+        </node>
+        <node name="reverse1" position="-64.00,24.00" prototype="list.reverse"/>
+        <node name="reverse2" position="-56.00,18.00" prototype="list.reverse"/>
+        <node name="scale1" position="-73.00,24.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="90.00,90.00"/>
+        </node>
+        <node name="search_colors18" position="-67.00,12.00" prototype="data.lookup">
+            <port name="key" type="string" value="range-in"/>
+        </node>
+        <node name="search_colors19" position="-64.00,12.00" prototype="data.lookup">
+            <port name="key" type="string" value="color"/>
+        </node>
+        <node name="search_colors20" position="-72.00,14.00" prototype="data.lookup">
+            <port name="key" type="string" value="range-in"/>
+        </node>
+        <node name="textpath1" position="-56.00,24.00" prototype="corevector.textpath">
+            <port name="font_size" type="float" value="10.0"/>
+            <port name="align" type="string" value="LEFT"/>
+        </node>
+        <node name="translate1" position="-56.00,27.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="13.00,4.00"/>
+        </node>
+        <node name="translate2" position="-73.00,26.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="341.00,-162.00"/>
+        </node>
+        <node name="ungroup2" position="-76.00,18.00" prototype="corevector.ungroup"/>
+        <conn input="ungroup2.shape" output="import_svg2"/>
+        <conn input="query_json4.json" output="load_jsonfile1"/>
+        <conn input="search_colors18.list" output="query_json4"/>
+        <conn input="query_json3.json" output="load_jsonfile1"/>
+        <conn input="search_colors19.list" output="query_json4"/>
+        <conn input="colorize15.shape" output="ungroup2"/>
+        <conn input="list_compare16.list_values" output="search_colors18"/>
+        <conn input="list_compare16.list_ref" output="search_colors19"/>
+        <conn input="search_colors20.list" output="query_json3"/>
+        <conn input="list_compare16.number" output="search_colors20"/>
+        <conn input="colorize15.fill" output="list_compare16"/>
+        <conn input="NET_SORTLIST.maps" output="query_json3"/>
+        <conn input="search_colors20.key" output="NET_SORTLIST"/>
+        <conn input="grid1.rows" output="count1"/>
+        <conn input="rect1.position" output="grid1"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="scale1.shape" output="colorize15"/>
+        <conn input="translate2.shape" output="scale1"/>
+        <conn input="combine1.list1" output="translate2"/>
+        <conn input="translate1.shape" output="textpath1"/>
+        <conn input="textpath1.position" output="grid1"/>
+        <conn input="textpath1.text" output="divide1"/>
+        <conn input="count1.list" output="search_colors18"/>
+        <conn input="reverse1.list" output="search_colors19"/>
+        <conn input="colorize1.fill" output="reverse1"/>
+        <conn input="reverse2.list" output="search_colors18"/>
+        <conn input="divide1.value1" output="reverse2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="combine1.list3" output="translate1"/>
+    </node>
+</ndbx>

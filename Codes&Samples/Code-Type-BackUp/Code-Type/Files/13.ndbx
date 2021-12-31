@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="cd03c032-10d5-41c7-bfa7-518d801a1a66">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="colorize2">
+        <node name="angle1" position="2.00,10.00" prototype="math.angle"/>
+        <node name="colorize1" position="5.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffff00"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="colorize2" position="-2.00,14.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+        </node>
+        <node name="concentric" position="5.00,10.00" prototype="core.network" renderedChild="ellipse1">
+            <node name="ellipse1" position="1.00,9.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="4.0"/>
+                <port name="height" type="float" value="4.0"/>
+            </node>
+            <node name="range2" position="6.00,7.00" prototype="math.range">
+                <port name="step" type="float" value="7.0"/>
+            </node>
+            <port childReference="ellipse1.position" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="range2.end" name="end" range="value" type="float" value="10.0" widget="float"/>
+            <port childReference="range2.step" name="step" range="value" type="float" value="7.0" widget="float"/>
+            <conn input="ellipse1.width" output="range2"/>
+            <conn input="ellipse1.height" output="range2"/>
+        </node>
+        <node name="distance1" position="2.00,7.00" prototype="math.distance"/>
+        <node name="divide1" position="2.00,8.00" prototype="math.divide">
+            <port name="value2" type="float" value="14.0"/>
+        </node>
+        <node name="make_strings1" position="-2.00,8.00" prototype="string.make_strings">
+            <port name="string" type="string" value="t y p e &amp; c o d e &amp;"/>
+            <port name="separator" type="string" value=" "/>
+        </node>
+        <node name="random_numbers1" position="8.00,8.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="30.0"/>
+            <port name="end" type="float" value="60.0"/>
+        </node>
+        <node name="range1" position="5.00,6.00" prototype="math.range">
+            <port name="start" type="float" value="195.0"/>
+            <port name="end" type="float" value="1242.0"/>
+            <port name="step" type="float" value="5.0"/>
+        </node>
+        <node name="range2" position="-6.00,8.00" prototype="math.range">
+            <port name="start" type="float" value="20.0"/>
+            <port name="end" type="float" value="83.0"/>
+            <port name="step" type="float" value="4.0"/>
+        </node>
+        <node name="rotate1" position="-2.00,12.00" prototype="corevector.rotate"/>
+        <node name="spiral" position="5.00,7.00" prototype="core.network" renderedChild="slice1">
+            <node name="line_angle1" position="1.00,4.00" prototype="corevector.line_angle">
+                <port name="position" type="point" value="1.00,0.00"/>
+                <port name="angle" type="float" value="12.0"/>
+                <port name="distance" type="float" value="94.0"/>
+            </node>
+            <node name="point1" position="4.00,6.00" prototype="corevector.point"/>
+            <node name="slice1" position="4.00,7.00" prototype="list.slice">
+                <port name="start_index" type="int" value="1"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <port childReference="line_angle1.angle" name="angle" range="value" type="float" value="12.0" widget="float"/>
+            <port childReference="line_angle1.distance" name="distance" range="value" type="float" value="94.0" widget="float"/>
+            <conn input="point1.value" output="line_angle1"/>
+            <conn input="slice1.list" output="point1"/>
+        </node>
+        <node name="textpath1" position="-2.00,10.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="Brown-Bold"/>
+        </node>
+        <conn input="concentric.end" output="random_numbers1"/>
+        <conn input="spiral.angle" output="range1"/>
+        <conn input="spiral.distance" output="range1"/>
+        <conn input="concentric.position" output="spiral"/>
+        <conn input="colorize1.shape" output="concentric"/>
+        <conn input="angle1.point2" output="spiral"/>
+        <conn input="rotate1.shape" output="textpath1"/>
+        <conn input="rotate1.angle" output="angle1"/>
+        <conn input="textpath1.position" output="spiral"/>
+        <conn input="textpath1.text" output="make_strings1"/>
+        <conn input="colorize2.shape" output="rotate1"/>
+        <conn input="distance1.point2" output="spiral"/>
+        <conn input="divide1.value1" output="distance1"/>
+        <conn input="textpath1.font_size" output="range2"/>
+    </node>
+</ndbx>

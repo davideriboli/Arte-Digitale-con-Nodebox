@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="fad0771a-84a6-4a46-b984-b65289978ae4">
+    <property name="canvasHeight" value="300"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="background_rect" position="-10.00,12.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1000.0"/>
+            <port name="height" type="float" value="300.0"/>
+        </node>
+        <node name="colorize1" position="-1.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#f900008e"/>
+        </node>
+        <node name="colorize2" position="-9.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffff9e"/>
+        </node>
+        <node name="colorize3" position="-10.00,13.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#dfe0e2ff"/>
+        </node>
+        <node name="combine1" position="-2.00,11.00" prototype="list.combine"/>
+        <node name="convert_range1" position="3.00,5.00" prototype="math.convert_range">
+            <port name="target_end" type="float" value="164.0"/>
+        </node>
+        <node name="count1" position="-1.00,3.00" prototype="list.count"/>
+        <node name="ellipse1" position="0.00,7.00" prototype="corevector.ellipse"/>
+        <node name="http_get1" position="2.00,-4.00" prototype="network.http_get">
+            <port name="url" type="string" value="https://spreadsheet.glitch.me/?key=1XsE6OHjsMEMeqb-Jlujw72bbDoGRPKPNdWu-SUkKeYg"/>
+        </node>
+        <node name="labels" position="-5.00,7.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="InputMonoCompressed-Thin"/>
+            <port name="font_size" type="float" value="16.0"/>
+        </node>
+        <node name="line_spacer" position="-3.00,5.00" prototype="corevector.line">
+            <port name="point1" type="point" value="-406.00,0.00"/>
+            <port name="point2" type="point" value="374.00,0.00"/>
+        </node>
+        <node position="2.00,-3.00" prototype="data.lookup">
+            <port name="key" type="string" value="body"/>
+        </node>
+        <node name="lookup_label" position="-4.00,1.00" prototype="data.lookup">
+            <port name="key" type="string" value="brand"/>
+        </node>
+        <node name="lookup_value" position="0.00,1.00" prototype="data.lookup">
+            <port name="key" type="string" value="caffine"/>
+        </node>
+        <node name="max1" position="3.00,3.00" prototype="math.max"/>
+        <node name="query_json1" position="2.00,-2.00" prototype="network.query_json">
+            <port name="query" type="string" value="$"/>
+        </node>
+        <node name="sqrt1" position="2.00,2.00" prototype="math.sqrt"/>
+        <node name="translate1" position="-1.00,9.00" prototype="corevector.translate"/>
+        <node name="translate2" position="-5.00,9.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="0.00,110.00"/>
+        </node>
+        <node name="translate3" position="-9.00,9.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="0.00,10.00"/>
+        </node>
+        <node name="values" position="-9.00,7.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="InputMonoCondensed-Bold"/>
+        </node>
+        <conn input="translate1.shape" output="colorize1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="ellipse1.width" output="convert_range1"/>
+        <conn input="ellipse1.height" output="convert_range1"/>
+        <conn input="convert_range1.source_end" output="max1"/>
+        <conn input="max1.values" output="sqrt1"/>
+        <conn input="convert_range1.value" output="sqrt1"/>
+        <conn input="count1.list" output="lookup_value"/>
+        <conn input="sqrt1.value" output="lookup_value"/>
+        <conn input="lookup_value.list" output="query_json1"/>
+        <conn input="lookup_label.list" output="query_json1"/>
+        <conn input="values.text" output="lookup_value"/>
+        <conn input="labels.text" output="lookup_label"/>
+        <conn input="translate2.shape" output="labels"/>
+        <conn input="lookup.list" output="http_get1"/>
+        <conn input="query_json1.json" output="lookup"/>
+        <conn input="line_spacer.points" output="count1"/>
+        <conn input="ellipse1.position" output="line_spacer"/>
+        <conn input="values.position" output="line_spacer"/>
+        <conn input="labels.position" output="line_spacer"/>
+        <conn input="colorize2.shape" output="values"/>
+        <conn input="translate3.shape" output="colorize2"/>
+        <conn input="combine1.list4" output="translate3"/>
+        <conn input="combine1.list3" output="translate1"/>
+        <conn input="combine1.list2" output="translate2"/>
+        <conn input="combine1.list1" output="colorize3"/>
+        <conn input="colorize3.shape" output="background_rect"/>
+    </node>
+</ndbx>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="50b09e03-3e64-441d-ad6d-4869c0223d13">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <node name="root" prototype="core.network" renderedChild="ellipse1">
+        <node name="ellipse1" position="3.00,3.00" prototype="corevector.ellipse"/>
+        <node name="frame1" position="6.00,-1.00" prototype="core.frame"/>
+        <node name="grid1" position="3.00,1.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="20"/>
+            <port name="rows" type="int" value="20"/>
+            <port name="width" type="float" value="2000.0"/>
+            <port name="height" type="float" value="2000.0"/>
+        </node>
+        <node name="random_numbers1" position="6.00,1.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="22"/>
+            <port name="start" type="float" value="5.0"/>
+            <port name="end" type="float" value="30.0"/>
+            <port name="seed" type="int" value="1"/>
+        </node>
+        <node name="range1" position="9.00,1.00" prototype="math.range"/>
+        <conn input="ellipse1.position" output="grid1"/>
+        <conn input="ellipse1.width" output="random_numbers1"/>
+        <conn input="ellipse1.height" output="random_numbers1"/>
+        <conn input="random_numbers1.amount" output="frame1"/>
+    </node>
+</ndbx>
