@@ -1,16 +1,17 @@
-![cover](Cover.png)
+![Nodebox](https://user-images.githubusercontent.com/623043/151831054-19e49c88-c7ad-49fd-afcb-06c621487931.jpg)
 
-# Generative Art with Nodebox 3
 
-Nodebox 3 seems an abandoned project and it's a pity 'cause it was a really good tool to get closer to generative art and design.
+# Arte Digitale con Nodebox
 
-The [official website](https://www.nodebox.net/node/) is still active and I use this software to introduce students to node programming.
+Nodebox sembra (purtroppo!) un progetto abbandonato o quasi, ma la versione 3 è così buona che la uso ancora sia per progetti di data visualization che per seminari di avviamento alla programmazione a nodi.
 
-This repository contains the best materials still around. Backups always report the credits of the authors and their sites.
+Questo repository contiene materiali prodotti da me e dai miei studenti e quanto di meglio sono riuscito a trovare in giro, rastrellando siti e altri repo che paiono abbandonati da anni. I vari crediti sonon sempre presenti nelle cartelle dei singoli network e così anche le varie licenze. Logicamente, se qualche autore non condividesse la modalità di pubblicazione, basta che mi contatti.
 
-Most come from GitHub repositories that have not been updated for several years.
+Il sito ufficiale di Nodebox, con molta documentazione e tutorial, è qui: https://www.nodebox.net/node/.
 
-## Credits
+Da qualche tempo è attivo anche [Nodebox Live](https://nodebox.live) che sembrava un nuovo progetto molto promettente, ma sembra anche questo fermo ormai da anni.
+
+## Crediti per i materiali contenuti
 
 - [Code & Type](http://code-type.com/)
 - [Formas](https://github.com/guilhermesv/Formas)
