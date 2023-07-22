@@ -1,3 +1,5 @@
+_I created this repository for my students between 2019 and 2020. It contains many files and usage examples of Nodebox 3, but it is to be considered obsolete and is kept only as an archive._
+
 ![Nodebox](https://user-images.githubusercontent.com/623043/151831054-19e49c88-c7ad-49fd-afcb-06c621487931.jpg)
 
 
